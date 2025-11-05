@@ -2,8 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>SSC CGL - Mock Test (Demo)</title>
+  <title>SSC CGL - Mock Test (Demo) - With 25 Reasoning Qs</title>
   <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <!-- MathJax for nice math rendering (optional for future math Qs) -->
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
   <style>
     :root{
       --ssc-blue:#1f4d8a;
@@ -63,7 +66,7 @@
       <div style="width:56px;height:56px;border-radius:8px;background:var(--ssc-blue);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:20px">SSC</div>
       <div style="text-align:left">
         <div style="font-size:22px;font-weight:800;color:var(--ssc-dark)">SSC CGL 2025 — Mock Test (Demo)</div>
-        <div style="color:#375b8a;margin-top:6px">Eduquity style interface · 4 sections · demo questions</div>
+        <div style="color:#375b8a;margin-top:6px">Eduquity style interface · 4 sections · demo questions (Reasoning: 25 questions)</div>
       </div>
     </div>
 
@@ -121,11 +124,6 @@
         <div style="font-weight:800;margin-bottom:6px">Section Summary</div>
         <div>Answered: <span id="secAnswered">0</span></div>
         <div>Not Answered: <span id="secNotAnswered">0</span></div>
-
-        <div style="margin-top:8px;display:flex;gap:8px">
-          <button id="fsLeft" class="btn" style="padding:6px 8px">Full Screen</button>
-          <button id="resetBtn" class="btn secondary" style="padding:6px 8px">Reset</button>
-        </div>
       </div>
     </div>
 
@@ -164,7 +162,6 @@
 
         <div>
           <span class="small">Questions answered: <strong id="footerAnswered" style="color:#e64a19">0</strong></span>
-          <button id="submitBtn2" class="btn" style="margin-left:12px;background:#2b62b0;color:#fff">Submit</button>
         </div>
       </div>
     </div>
@@ -187,13 +184,68 @@
 </div>
 
 <script>
-  /*************** Demo questions (2-3 each section) *****************/
+  /*************** 25 Reasoning questions + demo other sections *****************/
   const QUESTIONS = {
     'General Intelligence': [
-      { id:1, q:'Find the odd one out: 2, 6, 12, 20, 30', options:['2','6','12','20','30'], correct:'30' },
-      { id:2, q:'If PORT -> QPSU, then what follows SRUW -> ?', options:['VUWZ','TSWX','VUXZ','TTXZ'], correct:'VUXZ' },
-      { id:3, q:'Select the next in series: A, C, F, J, ? ', options:['P','O','Q','R'], correct:'P' }
+      { id:1, q:'In the following question, select the related word from the given alternatives.\\nWatt : Power :: Pascal : ?', options:['Energy','Temperature','Pressure','Force'], correct:'Pressure' },
+      { id:2, q:'In the following question, select the related word from the given alternatives.\\nMekong : Tibet :: Amazon : ?', options:['Chile','Peru','Colombia','Ecuador'], correct:'Peru' },
+      { id:3, q:'Select the letter-cluster from among the given options that can replace the question mark (?) in the series.\\nCGK, GKO, KOS, OSW, ?', options:['SDA','KNB','SWA','KJH'], correct:'SWA' },
+      { id:4, q:'Select the letter-cluster that can replace the question mark:\\nMIN, NJM, OKL, PLK, ?', options:['QWS','HGF','QMJ','UJH'], correct:'QMJ' },
+      { id:5, q:'Select the letter-cluster that can replace the question mark:\\nBRF, EUH, HXJ, KAL, ?', options:['NMB','NKH','NHG','NDN'], correct:'NDN' },
+      { id:6, q:'Select the letter-cluster that can replace the question mark:\\nWZWT, WVOH, WRGV, WNYJ, ?', options:['WJQX','WJQW','WHPX','WIPX'], correct:'WJQX' },
+      { id:7, q:'Select the letter-cluster that can replace the question mark:\\nMCFI, NEKP, OGPW, PIUD, ?', options:['NKYD','QLYL','QKZK','QKZL'], correct:'QKZK' },
+      { id:8, q:'What comes next: 3, 12, 7, 16, 11, 20, 15, ?', options:['16','24','14','18'], correct:'24' },
+      { id:9, q:'Each of the letters in the word STUDENT is arranged in alphabetical order. How many letters are there in the English alphabetical series between the letter that is second from the left and the one that is fourth from the right in the new letter-cluster formed?', options:['17','13','11','15'], correct:'13' },
+      { id:10, q:'Which of the following addresses are identical to each other?\\n(Choose the one that exactly matches another entry)', options:[
+          'Arjun Mehta A-101, Emerald Towers, Surat, 395001',
+          'Arjun Mehta A-101, Emerald Tower, Surat, 395001',
+          'Arjun M. A-101, Emerald Tower, Surat, 395001',
+          'Arjun Mehta A-101, Emerald Tower, Surat, 395001'
+        ], correct:'Arjun Mehta A-101, Emerald Tower, Surat, 395001' },
+      { id:11, q:'Which of the following is/are identical to the address given:\\nMeenal Gupta 102, Silver Oaks, Sector 12, Noida, 201301', options:[
+          'Meenal Gupta 102, Silver Oaks, Sector 12, Noida, 201301',
+          'Meenal Gupta 102, Silver Oaks, Sector 12, Noida, 201301',
+          'Meenal Gupta 102, Silver Oaks, Sector-12, Noida, 201301',
+          'Meenal Gupta 102, Silver Oaks, Sector 12, Noida 201301',
+          'Meenal Gupta 102, Silver Oaks, Sector 12, Noida, 201302'
+        ], correct:'Meenal Gupta 102, Silver Oaks, Sector 12, Noida, 201301' },
+      { id:12, q:'Find the option that best completes the analogy.\\nAG : 10 :: CM : ?', options:['KO','KU','KS','S'], correct:'KO' },
+      { id:13, q:'A is facing North. B is seated second to the right of A. Who is sitting immediately to the left of B?', options:[
+          'The person seated to the immediate right of A',
+          'The person seated opposite to A',
+          'The person seated to the immediate left of A',
+          'Cannot be determined'
+        ], correct:'The person seated to the immediate right of A' },
+      { id:14, q:'TIME : VJOG :: WORD : ?', options:['YPTF','YQTG','YPSF','ZPSF'], correct:'YPTF' },
+      { id:15, q:'GNIDAER : READING :: NOITULOS : ?', options:['SOLUTION','SOLUNOIT','NOILOSUT','POLLUTION'], correct:'SOLUTION' },
+      { id:16, q:'AYRRIC : CATTLE :: NCPDCAR : ?', options:['SUBJECTS','NEGLECT','PERFECT','OPERATE'], correct:'PERFECT' },
+      { id:17, q:'Identify the odd one: 2, 3, 5, 7, 11, 13, 17, 20', options:['17','13','20','1'], correct:'20' },
+      { id:18, q:'Which of the following is the odd one out?', options:[
+          '2, 3, 5',
+          '11, 13, 17',
+          '4, 6, 8',
+          '7, 19, 23'
+        ], correct:'4, 6, 8' },
+      { id:19, q:'Rani said, “The man in the photo is my mother’s son-in-law.” Who is the man to Rani?', options:['Husband','Father','Uncle','Cousin'], correct:'Husband' },
+      { id:20, q:'In each option a group of three numbers/symbols is given. Identify the group that does NOT follow the same pattern as the others.\\nOptions:', options:[
+          'K11 : 19 : G7',
+          'M13 : K11 : 19',
+          'O15 : M13 : K11',
+          'N14 : K11 : H8'
+        ], correct:'K11 : 19 : G7' },
+      { id:21, q:'Find the group that does NOT follow the same pattern as others:', options:[
+          'A1@ : B2# : C3$',
+          'D4% : E5$ : F6&',
+          'G7* : H8( : I9)',
+          'J10_ : K11@ : L12@'
+        ], correct:'D4% : E5$ : F6&' },
+      { id:22, q:'Pointing to a man, a woman said, “His mother is the only daughter of my father.” How is the man related to the woman?', options:['Son','Nephew','Cousin','Grandson'], correct:'Son' },
+      { id:23, q:'Pointing to a woman, John says, “She is the wife of my uncle’s only son.” How is the woman related to John?', options:['Cousin','Sister-in-law','Niece','Aunt'], correct:'Cousin' },
+      { id:24, q:'A man said, “My mother’s husband’s only son is the father of your sister’s brother.” How is the man related to you?', options:['Uncle','Father','Grandfather','Brother'], correct:'Father' },
+      { id:25, q:'If # = ×, @ = –, $ = +, then evaluate: 9 # 2 @ 3 $ 1', options:['18','14','16','17'], correct:'16' }
     ],
+
+    // keep other sections as small demo sets for now
     'General Awareness': [
       { id:26, q:'Who is known as the Father of the Indian Constitution?', options:['Mahatma Gandhi','B. R. Ambedkar','Nehru','Rajendra Prasad'], correct:'B. R. Ambedkar' },
       { id:27, q:'Which planet is known as the Red Planet?', options:['Earth','Mars','Jupiter','Venus'], correct:'Mars' },
@@ -220,7 +272,9 @@
     marked: {},  // key: section-id => true
     timer: 60*60, // seconds
     timerInterval: null,
-    reviewMode: false
+    reviewMode: false,
+    started: false,
+    submitted: false
   };
 
   /********** helpers ************/
@@ -229,7 +283,6 @@
     const tot = Object.values(state.answers).filter(Boolean).length;
     el('totalAnswered').innerText = tot;
     el('footerAnswered').innerText = tot;
-    el('startScreen') && (el('startScreen').style.display = state.started ? 'none' : '');
   }
   function secAnswered(section){
     return QUESTIONS[section].reduce((a,q)=> a + (state.answers[`${section}-${q.id}`] ? 1:0), 0);
@@ -267,7 +320,7 @@
       div.onclick = ()=> { state.index = i; renderQuestion(); };
       wrap.appendChild(div);
     });
-    document.querySelectorAll('.qbtn'); updateSectionSummary();
+    updateSectionSummary();
   }
 
   function updateSectionSummary(){
@@ -280,7 +333,10 @@
     const q = QUESTIONS[state.currentSection][state.index];
     if(!q) return;
     el('qNumber').innerText = `Question No ${q.id}`;
-    el('qText').innerText = q.q;
+    // if MathJax expressions are present, they will render after we set innerHTML
+    // Use innerHTML only if we need MathJax; otherwise use textContent
+    const text = q.q.replace(/\\n/g,'<br>');
+    el('qText').innerHTML = text;
     const optsWrap = el('optionsWrap');
     optsWrap.innerHTML = '';
     q.options.forEach(opt=>{
@@ -288,7 +344,6 @@
       const isChecked = state.answers[key] === opt;
       const div = document.createElement('label');
       div.className = 'option';
-      // in review mode highlight correct / wrong
       if(state.reviewMode){
         if(opt === q.correct) div.classList.add('correct');
         else if(isChecked && opt !== q.correct) div.classList.add('wrong');
@@ -297,7 +352,6 @@
         if(state.reviewMode) return;
         state.answers[key] = opt;
         updateTotals(); buildGrid(); updateSectionSummary();
-        // visually update radios
         renderQuestion(); 
       };
       const radio = document.createElement('input');
@@ -314,11 +368,15 @@
     updateTotals();
     buildGrid();
     updateSectionSummary();
+
+    // trigger MathJax typeset if needed
+    if (window.MathJax) {
+      try { MathJax.typesetPromise(); } catch(e){ /* ignore */ }
+    }
   }
 
   /********** navigation actions **********/
   function saveAndNext(){
-    // keep answer as is (already saved on click), advance
     const list = QUESTIONS[state.currentSection];
     if(state.index < list.length - 1) state.index++;
     renderQuestion();
@@ -330,7 +388,6 @@
   function markForReview(){
     const q = QUESTIONS[state.currentSection][state.index];
     state.marked[`${state.currentSection}-${q.id}`] = true;
-    // move next
     saveAndNext();
     buildGrid();
   }
@@ -404,21 +461,17 @@
   }
 
   function doSubmit(){
-    // stop timer
     if(state.timerInterval) clearInterval(state.timerInterval);
     state.submitted = true;
     showResults();
   }
 
   function startReviewMode(){
-    // enter review mode: return to exam area but with review highlights
     state.reviewMode = true;
     state.index = 0;
     state.currentSection = state.sections[0];
     el('resultsScreen').style.display = 'none';
     el('examWrap').style.display = 'block';
-    el('enterFS').style.display = 'none'; el('exitFS').style.display = 'inline-block';
-    // pause timer
     if(state.timerInterval) clearInterval(state.timerInterval);
     renderQuestion();
   }
@@ -435,10 +488,8 @@
       state.started = true;
       el('startScreen').style.display = 'none';
       el('examWrap').style.display = 'block';
-      // initialize timer and show 60:00
       el('timeBox').innerText = formatTime(state.timer);
       startTimer();
-      // go fullscreen
       enterFull();
     };
 
@@ -446,37 +497,23 @@
     el('enterFS').onclick = ()=> { enterFull(); };
     el('exitFS').onclick = ()=> { exitFull(); };
 
-    // left fs
-    el('fsLeft').onclick = ()=> { enterFull(); };
-
-    // reset button
-    el('resetBtn').onclick = ()=>{
-      if(confirm('Reset all answers and marks?')){ state.answers={}; state.marked={}; state.index=0; renderQuestion(); buildGrid(); updateTotals(); updateSectionSummary(); }
-    };
-
     // nav buttons
     el('saveNextBtn').onclick = ()=> { saveAndNext(); };
     el('prevBtn').onclick = ()=> { goPrev(); };
     el('markBtn').onclick = ()=> { markForReview(); };
 
-    // submit buttons
+    // submit buttons (top)
     el('submitBtn').onclick = ()=> { if(confirm('Submit test now?')) doSubmit(); };
-    el('submitBtn2').onclick = ()=> { if(confirm('Submit test now?')) doSubmit(); };
-    el('submitBtn') && (el('submitBtn').onclick = ()=>{ if(confirm('Submit test now?')) doSubmit(); });
 
-    // results flow
+    // review / restart
     el('reviewBtn').onclick = ()=> { startReviewMode(); };
     el('restartBtn').onclick = ()=> { if(confirm('Restart test?')) location.reload(); };
 
-    // results from second submit controls (footer)
-    el('submitBtn2').onclick = ()=> { if(confirm('Submit test now?')) doSubmit(); };
-
-    // pause timer placeholder
+    // pause timer toggle
     el('pauseBtn').onclick = ()=> {
       if(state.timerInterval){ clearInterval(state.timerInterval); state.timerInterval = null; el('pauseBtn').innerText = '▶'; }
       else { startTimer(); el('pauseBtn').innerText = '||'; }
     };
-
   });
 
 </script>
