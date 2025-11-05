@@ -1,0 +1,484 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>SSC CGL - Mock Test (Demo)</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <style>
+    :root{
+      --ssc-blue:#1f4d8a;
+      --ssc-dark:#153d7a;
+      --accent:#28a745;
+      --marked:#7b3fb0;
+      --bg:#f4f7fb;
+      --card:#ffffff;
+    }
+    html,body{height:100%;margin:0;font-family:Arial,Helvetica,sans-serif; background:var(--bg); color:#111}
+    .center-screen{display:flex;align-items:center;justify-content:center;height:100vh;flex-direction:column;padding:20px}
+    .btn{background:var(--ssc-blue);color:#fff;padding:10px 14px;border-radius:6px;border:0;cursor:pointer;font-weight:700}
+    .btn.secondary{background:#6d8bb0}
+    .btn.danger{background:#c64545}
+    .layout{display:flex; height:calc(100vh - 64px); box-shadow:0 2px 8px rgba(0,0,0,0.05)}
+    .left{width:300px;background:#fff;border-right:1px solid #e3e7ee;padding:18px;display:flex;flex-direction:column;gap:10px}
+    .logo{display:flex;gap:10px;align-items:center}
+    .logo .badge{width:42px;height:42px;border-radius:6px;background:var(--ssc-blue);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800}
+    .title{font-size:18px;font-weight:800;color:var(--ssc-dark)}
+    .sections{display:flex;flex-direction:column;gap:8px;margin-top:8px}
+    .section-btn{background:var(--ssc-blue);color:#fff;padding:8px;border-radius:5px;cursor:pointer;text-align:left;border:0;font-weight:700}
+    .section-btn.active{background:var(--accent);color:#fff}
+    .qgrid{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+    .qbtn{width:38px;height:38px;border-radius:6px;display:flex;align-items:center;justify-content:center;background:var(--ssc-blue);color:#fff;font-weight:700;cursor:pointer;border:0}
+    .qbtn.answered{background:var(--ssc-dark)}
+    .qbtn.marked{background:var(--marked)}
+    .summary{margin-top:auto;background:#f1f5fb;padding:10px;border-radius:6px;color:var(--ssc-dark)}
+    .main{flex:1;display:flex;flex-direction:column}
+    .topbar{display:flex;justify-content:space-between;align-items:center;padding:12px 18px;background:var(--ssc-blue);color:#fff}
+    .top-left{display:flex;align-items:center;gap:12px}
+    .top-controls{display:flex;align-items:center;gap:12px}
+    .timer{font-weight:800;color:#ffdddd;background:#b30000;padding:6px 10px;border-radius:6px}
+    .controls{display:flex;gap:8px;align-items:center}
+    .question-area{padding:20px;background:var(--card);flex:1;overflow:auto}
+    .qheader{border:1px solid #e6e9ef;padding:10px;border-radius:6px;background:#fff;margin-bottom:12px}
+    .options{display:flex;flex-direction:column;gap:10px;margin-top:10px}
+    .option{border:1px solid #e0e4ea;padding:10px;border-radius:6px;display:flex;align-items:center;gap:10px;cursor:pointer;background:#fff}
+    .option input{transform:scale(1.1)}
+    .option.correct{background:#e6ffea;border-color:#63c276}
+    .option.wrong{background:#ffecec;border-color:#e07a7a}
+    .footer{display:flex;justify-content:space-between;align-items:center;padding:12px 18px;background:#fff;border-top:1px solid #e3e7ee}
+    .small{font-size:13px;color:#555}
+    .results-wrap{padding:18px}
+    .results-table{width:100%;border-collapse:collapse;margin-top:12px}
+    .results-table th,.results-table td{border:1px solid #e3e7ee;padding:8px;text-align:left}
+    .review-badge{font-weight:800;color:var(--ssc-dark)}
+    /* responsive */
+    @media(max-width:900px){ .left{display:none} .layout{height:auto;flex-direction:column} }
+  </style>
+</head>
+<body>
+
+<!-- START SCREEN -->
+<div id="startScreen" class="center-screen">
+  <div style="max-width:760px;text-align:center">
+    <div style="display:flex;align-items:center;gap:12px;justify-content:center;margin-bottom:12px">
+      <div style="width:56px;height:56px;border-radius:8px;background:var(--ssc-blue);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:20px">SSC</div>
+      <div style="text-align:left">
+        <div style="font-size:22px;font-weight:800;color:var(--ssc-dark)">SSC CGL 2025 — Mock Test (Demo)</div>
+        <div style="color:#375b8a;margin-top:6px">Eduquity style interface · 4 sections · demo questions</div>
+      </div>
+    </div>
+
+    <div style="margin-top:14px">
+      <button class="btn" id="startBtn">Start Exam (Enter Fullscreen)</button>
+    </div>
+
+    <div style="margin-top:18px;color:#555;font-size:14px;line-height:1.5;">
+      Instructions: This demo shows one question at a time. Use Save & Next, Mark for Review, and Submit to view section-wise results. Answers: +2, Wrong: -0.5, Unanswered: 0.
+    </div>
+  </div>
+</div>
+
+<!-- EXAM LAYOUT -->
+<div id="examWrap" style="display:none">
+  <div class="topbar">
+    <div class="top-left">
+      <div style="display:flex;gap:12px;align-items:center">
+        <div class="logo">
+          <div class="badge">P</div>
+          <div class="badge">M</div>
+        </div>
+        <div style="font-weight:800">SSC CGL 2025 — Mock Test</div>
+      </div>
+      <div style="margin-left:16px;color:#e6f1ff;font-weight:600">| Demo</div>
+    </div>
+
+    <div class="top-controls">
+      <div style="text-align:right">
+        <div class="small">Total answered : <strong id="totalAnswered">0</strong></div>
+        <div style="margin-top:6px" class="timer" id="timeBox">60:00</div>
+      </div>
+      <div class="controls" style="margin-left:14px">
+        <button id="enterFS" class="btn secondary">Enter Full Screen</button>
+        <button id="exitFS" class="btn secondary" style="display:none;background:#c64545">Exit Full Screen</button>
+        <button id="pauseBtn" class="btn secondary" title="Pause timer" style="background:#fff;color:var(--ssc-blue);border:1px solid #e3e7ee">||</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="layout" id="layout">
+    <div class="left">
+      <div class="logo"><div class="badge">SSC</div><div style="font-weight:800;color:var(--ssc-dark);margin-left:6px">Mock Paper</div></div>
+
+      <div style="margin-top:12px" class="sections" id="sectionButtons">
+        <!-- populated by JS -->
+      </div>
+
+      <div style="margin-top:6px;font-weight:800;color:var(--ssc-dark)">Question Panel</div>
+      <div class="qgrid" id="qGrid">
+        <!-- question number grid -->
+      </div>
+
+      <div class="summary">
+        <div style="font-weight:800;margin-bottom:6px">Section Summary</div>
+        <div>Answered: <span id="secAnswered">0</span></div>
+        <div>Not Answered: <span id="secNotAnswered">0</span></div>
+
+        <div style="margin-top:8px;display:flex;gap:8px">
+          <button id="fsLeft" class="btn" style="padding:6px 8px">Full Screen</button>
+          <button id="resetBtn" class="btn secondary" style="padding:6px 8px">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="main">
+      <div style="padding:12px 18px;background:#fff;border-bottom:1px solid #eaeef5;display:flex;align-items:center;gap:12px">
+        <button id="prevBtn" class="btn secondary" style="background:#2b62b0">Previous</button>
+        <button id="markBtn" class="btn secondary">Mark for Review</button>
+        <button id="saveNextBtn" class="btn" style="background:var(--ssc-blue)">Save & Next</button>
+        <button id="submitBtn" class="btn" style="background:#28a745">Submit</button>
+
+        <div style="margin-left:auto;display:flex;gap:8px;align-items:center">
+          <label style="font-weight:700;color:#333">Language:</label>
+          <select id="langSelect" style="padding:6px;border-radius:6px;border:1px solid #e3e7ee">
+            <option>English</option>
+            <option>Hindi</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="question-area" id="questionArea">
+        <div class="qheader">
+          <div style="font-weight:800" id="qNumber">Question No 1</div>
+        </div>
+        <div id="qText" style="font-size:16px;line-height:1.6">Question text appears here</div>
+
+        <div class="options" id="optionsWrap">
+          <!-- options generated via JS -->
+        </div>
+      </div>
+
+      <div class="footer">
+        <div>
+          <button id="symBtn" class="btn secondary" style="background:#1f4d8a">Symbols</button>
+          <button id="instrBtn" class="btn secondary" style="background:#6d8bb0">Instructions</button>
+        </div>
+
+        <div>
+          <span class="small">Questions answered: <strong id="footerAnswered" style="color:#e64a19">0</strong></span>
+          <button id="submitBtn2" class="btn" style="margin-left:12px;background:#2b62b0;color:#fff">Submit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- RESULTS & REVIEW AREA (hidden until submit) -->
+<div id="resultsScreen" style="display:none;padding:18px;background:var(--bg);min-height:100vh">
+  <div style="max-width:1100px;margin:0 auto;">
+    <h2 style="color:var(--ssc-dark)">Exam Results</h2>
+    <div class="results-wrap" id="resultsWrap">
+      <!-- table inserted by JS -->
+    </div>
+
+    <div style="margin-top:14px;display:flex;gap:10px">
+      <button id="reviewBtn" class="btn">Review Your Answers</button>
+      <button id="restartBtn" class="btn secondary" style="background:#cfcfcf;color:#111">Restart Test</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  /*************** Demo questions (2-3 each section) *****************/
+  const QUESTIONS = {
+    'General Intelligence': [
+      { id:1, q:'Find the odd one out: 2, 6, 12, 20, 30', options:['2','6','12','20','30'], correct:'30' },
+      { id:2, q:'If PORT -> QPSU, then what follows SRUW -> ?', options:['VUWZ','TSWX','VUXZ','TTXZ'], correct:'VUXZ' },
+      { id:3, q:'Select the next in series: A, C, F, J, ? ', options:['P','O','Q','R'], correct:'P' }
+    ],
+    'General Awareness': [
+      { id:26, q:'Who is known as the Father of the Indian Constitution?', options:['Mahatma Gandhi','B. R. Ambedkar','Nehru','Rajendra Prasad'], correct:'B. R. Ambedkar' },
+      { id:27, q:'Which planet is known as the Red Planet?', options:['Earth','Mars','Jupiter','Venus'], correct:'Mars' },
+      { id:28, q:'The capital of France is?', options:['Berlin','Rome','Paris','Madrid'], correct:'Paris' }
+    ],
+    'Quantitative Aptitude': [
+      { id:51, q:'What is 15% of 200?', options:['25','30','35','40'], correct:'30' },
+      { id:52, q:'Simplify: 12 × 8 ÷ 4', options:['16','22','24','26'], correct:'24' },
+      { id:53, q:'If x=2, what is 3x^2 + 1?', options:['13','12','11','14'], correct:'13' }
+    ],
+    'English Comprehension': [
+      { id:76, q:'Choose the correctly spelt word.', options:['Enviroment','Environment','Environmment','Environmnt'], correct:'Environment' },
+      { id:77, q:'Find the synonym of "Abandon".', options:['Retain','Keep','Forsake','Hold'], correct:'Forsake' },
+      { id:78, q:'Select the antonym of "Scarce".', options:['Plentiful','Rare','Little','Sparse'], correct:'Plentiful' }
+    ]
+  };
+
+  /**************** state ********************/
+  let state = {
+    sections: Object.keys(QUESTIONS),
+    currentSection: 'General Intelligence',
+    index: 0,
+    answers: {}, // key: section-id => option
+    marked: {},  // key: section-id => true
+    timer: 60*60, // seconds
+    timerInterval: null,
+    reviewMode: false
+  };
+
+  /********** helpers ************/
+  const el = id => document.getElementById(id);
+  function updateTotals(){
+    const tot = Object.values(state.answers).filter(Boolean).length;
+    el('totalAnswered').innerText = tot;
+    el('footerAnswered').innerText = tot;
+    el('startScreen') && (el('startScreen').style.display = state.started ? 'none' : '');
+  }
+  function secAnswered(section){
+    return QUESTIONS[section].reduce((a,q)=> a + (state.answers[`${section}-${q.id}`] ? 1:0), 0);
+  }
+
+  /********** render left sections and grid **********/
+  function buildLeftPanel(){
+    const secWrap = el('sectionButtons');
+    secWrap.innerHTML = '';
+    state.sections.forEach(s=>{
+      const btn = document.createElement('button');
+      btn.className = 'section-btn' + (state.currentSection===s? ' active':'');
+      btn.innerText = s;
+      btn.onclick = ()=> { state.currentSection = s; state.index = 0; renderQuestion(); buildGrid(); updateSectionSummary(); highlightActiveSection(); };
+      secWrap.appendChild(btn);
+    });
+    buildGrid();
+    updateSectionSummary();
+    highlightActiveSection();
+  }
+  function highlightActiveSection(){
+    const nodes = document.querySelectorAll('.section-btn');
+    nodes.forEach((n,i)=> n.className = 'section-btn' + (state.sections[i]===state.currentSection? ' active':''));
+  }
+
+  function buildGrid(){
+    const wrap = el('qGrid'); wrap.innerHTML = '';
+    const list = QUESTIONS[state.currentSection];
+    list.forEach((q,i)=>{
+      const key = `${state.currentSection}-${q.id}`;
+      const div = document.createElement('button');
+      div.className = 'qbtn' + (state.marked[key]? ' marked' : (state.answers[key]? ' answered':'')); 
+      div.innerText = i+1;
+      div.title = 'Q ' + (i+1);
+      div.onclick = ()=> { state.index = i; renderQuestion(); };
+      wrap.appendChild(div);
+    });
+    document.querySelectorAll('.qbtn'); updateSectionSummary();
+  }
+
+  function updateSectionSummary(){
+    el('secAnswered').innerText = secAnswered(state.currentSection);
+    el('secNotAnswered').innerText = QUESTIONS[state.currentSection].length - secAnswered(state.currentSection);
+  }
+
+  /********** question rendering **********/
+  function renderQuestion(){
+    const q = QUESTIONS[state.currentSection][state.index];
+    if(!q) return;
+    el('qNumber').innerText = `Question No ${q.id}`;
+    el('qText').innerText = q.q;
+    const optsWrap = el('optionsWrap');
+    optsWrap.innerHTML = '';
+    q.options.forEach(opt=>{
+      const key = `${state.currentSection}-${q.id}`;
+      const isChecked = state.answers[key] === opt;
+      const div = document.createElement('label');
+      div.className = 'option';
+      // in review mode highlight correct / wrong
+      if(state.reviewMode){
+        if(opt === q.correct) div.classList.add('correct');
+        else if(isChecked && opt !== q.correct) div.classList.add('wrong');
+      }
+      div.onclick = ()=> {
+        if(state.reviewMode) return;
+        state.answers[key] = opt;
+        updateTotals(); buildGrid(); updateSectionSummary();
+        // visually update radios
+        renderQuestion(); 
+      };
+      const radio = document.createElement('input');
+      radio.type='radio';
+      radio.name='opt';
+      radio.checked = isChecked;
+      radio.onchange = ()=>{}; // handled by label click
+      div.appendChild(radio);
+      const span = document.createElement('span');
+      span.innerText = opt;
+      div.appendChild(span);
+      optsWrap.appendChild(div);
+    });
+    updateTotals();
+    buildGrid();
+    updateSectionSummary();
+  }
+
+  /********** navigation actions **********/
+  function saveAndNext(){
+    // keep answer as is (already saved on click), advance
+    const list = QUESTIONS[state.currentSection];
+    if(state.index < list.length - 1) state.index++;
+    renderQuestion();
+  }
+  function goPrev(){
+    if(state.index > 0) state.index--;
+    renderQuestion();
+  }
+  function markForReview(){
+    const q = QUESTIONS[state.currentSection][state.index];
+    state.marked[`${state.currentSection}-${q.id}`] = true;
+    // move next
+    saveAndNext();
+    buildGrid();
+  }
+
+  /********** timer & fullscreen **********/
+  function startTimer(){
+    if(state.timerInterval) clearInterval(state.timerInterval);
+    state.timerInterval = setInterval(()=>{
+      if(state.timer <= 0){ clearInterval(state.timerInterval); doSubmit(); return; }
+      state.timer--;
+      el('timeBox').innerText = formatTime(state.timer);
+    },1000);
+  }
+
+  function formatTime(s){
+    const mm = String(Math.floor(s/60)).padStart(2,'0');
+    const ss = String(s%60).padStart(2,'0');
+    return `${mm}:${ss}`;
+  }
+
+  function enterFull(){
+    const doc = document.documentElement;
+    if (doc.requestFullscreen) doc.requestFullscreen();
+    else if (doc.webkitRequestFullscreen) doc.webkitRequestFullscreen();
+    el('enterFS').style.display = 'none';
+    el('exitFS').style.display = 'inline-block';
+  }
+  function exitFull(){
+    if (document.exitFullscreen) document.exitFullscreen();
+    else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
+    el('enterFS').style.display = 'inline-block';
+    el('exitFS').style.display = 'none';
+  }
+
+  /********** submit & results **********/
+  function calculateResults(){
+    const res = {};
+    state.sections.forEach(sec=>{
+      const list = QUESTIONS[sec];
+      let right=0, wrong=0, unanswered=0;
+      list.forEach(q=>{
+        const ans = state.answers[`${sec}-${q.id}`];
+        if(!ans) unanswered++;
+        else if(ans === q.correct) right++;
+        else wrong++;
+      });
+      res[sec] = {
+        total: list.length,
+        attempted: list.length - unanswered,
+        right, wrong, unanswered,
+        marks: (right * 2) - (wrong * 0.5)
+      };
+    });
+    return res;
+  }
+
+  function showResults(){
+    const res = calculateResults();
+    el('examWrap').style.display = 'none';
+    el('resultsScreen').style.display = 'block';
+    const wrap = el('resultsWrap');
+    let html = '<table class="results-table">';
+    html += '<thead><tr><th>Section</th><th>Total Qs</th><th>Attempted</th><th>Right</th><th>Wrong</th><th>Unanswered</th><th>Marks</th></tr></thead><tbody>';
+    Object.entries(res).forEach(([sec,r])=>{
+      html += `<tr><td style="font-weight:800;color:var(--ssc-dark)">${sec}</td><td>${r.total}</td><td>${r.attempted}</td><td>${r.right}</td><td>${r.wrong}</td><td>${r.unanswered}</td><td style="font-weight:800">${r.marks}</td></tr>`;
+    });
+    html += '</tbody></table>';
+    const totalMarks = Object.values(res).reduce((a,b)=>a + b.marks, 0);
+    html += `<div style="margin-top:12px;font-weight:800">Total Marks: ${totalMarks}</div>`;
+    wrap.innerHTML = html;
+  }
+
+  function doSubmit(){
+    // stop timer
+    if(state.timerInterval) clearInterval(state.timerInterval);
+    state.submitted = true;
+    showResults();
+  }
+
+  function startReviewMode(){
+    // enter review mode: return to exam area but with review highlights
+    state.reviewMode = true;
+    state.index = 0;
+    state.currentSection = state.sections[0];
+    el('resultsScreen').style.display = 'none';
+    el('examWrap').style.display = 'block';
+    el('enterFS').style.display = 'none'; el('exitFS').style.display = 'inline-block';
+    // pause timer
+    if(state.timerInterval) clearInterval(state.timerInterval);
+    renderQuestion();
+  }
+
+  /********** wire up buttons **********/
+  document.addEventListener('DOMContentLoaded', ()=>{
+    // initial UI
+    buildLeftPanel();
+    renderQuestion();
+    updateTotals();
+
+    // Start exam button
+    el('startBtn').onclick = ()=>{
+      state.started = true;
+      el('startScreen').style.display = 'none';
+      el('examWrap').style.display = 'block';
+      // initialize timer and show 60:00
+      el('timeBox').innerText = formatTime(state.timer);
+      startTimer();
+      // go fullscreen
+      enterFull();
+    };
+
+    // Fullscreen buttons
+    el('enterFS').onclick = ()=> { enterFull(); };
+    el('exitFS').onclick = ()=> { exitFull(); };
+
+    // left fs
+    el('fsLeft').onclick = ()=> { enterFull(); };
+
+    // reset button
+    el('resetBtn').onclick = ()=>{
+      if(confirm('Reset all answers and marks?')){ state.answers={}; state.marked={}; state.index=0; renderQuestion(); buildGrid(); updateTotals(); updateSectionSummary(); }
+    };
+
+    // nav buttons
+    el('saveNextBtn').onclick = ()=> { saveAndNext(); };
+    el('prevBtn').onclick = ()=> { goPrev(); };
+    el('markBtn').onclick = ()=> { markForReview(); };
+
+    // submit buttons
+    el('submitBtn').onclick = ()=> { if(confirm('Submit test now?')) doSubmit(); };
+    el('submitBtn2').onclick = ()=> { if(confirm('Submit test now?')) doSubmit(); };
+    el('submitBtn') && (el('submitBtn').onclick = ()=>{ if(confirm('Submit test now?')) doSubmit(); });
+
+    // results flow
+    el('reviewBtn').onclick = ()=> { startReviewMode(); };
+    el('restartBtn').onclick = ()=> { if(confirm('Restart test?')) location.reload(); };
+
+    // results from second submit controls (footer)
+    el('submitBtn2').onclick = ()=> { if(confirm('Submit test now?')) doSubmit(); };
+
+    // pause timer placeholder
+    el('pauseBtn').onclick = ()=> {
+      if(state.timerInterval){ clearInterval(state.timerInterval); state.timerInterval = null; el('pauseBtn').innerText = '▶'; }
+      else { startTimer(); el('pauseBtn').innerText = '||'; }
+    };
+
+  });
+
+</script>
+</body>
+</html>
