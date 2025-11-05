@@ -1,4 +1,3 @@
-<!-- PART A: SSC CGL Tier-I Mock (Interface + Core JS) -->
 <!doctype html>
 <html lang="en">
 <head>
@@ -148,46 +147,154 @@
   </div>
 
 <script>
-/* PART A JS: Interface + Core Logic
-   - Part B must define the QUESTIONS object:
-     QUESTIONS = { "Reasoning": [...], "General Awareness": [...], "Quantitative Aptitude": [...], "English Comprehension": [...] }
-   - Each section array contains objects: { id: NUM, q: "Question text", options: ["A","B","C","D"], correct: "OPTION_TEXT" (optional) }
-*/
+/* Single-file mock test (Q1-100) */
+/* QUESTIONS object below contains all sections and questions (1-100). */
 
-let QUESTIONS = {}; // <-- Part B will overwrite this with full Q26-100 (and Q1-25 if present)
+const QUESTIONS = {
+  "Reasoning": [
+    {"id":1,"q":"Watt : Power :: Pascal : ?","options":["A. Energy","B. Temperature","C. Pressure","D. Force"]},
+    {"id":2,"q":"Mekong : Tibet :: Amazon : ?","options":["A. Chile","B. Peru","C. Colombia","D. Ecuador"]},
+    {"id":3,"q":"Select the letter-cluster that can replace the question mark in the series: CGK, GKO, KOS, OSW, ?","options":["A. SDA","B. KNB","C. SWA","D. KJH"]},
+    {"id":4,"q":"Select the letter-cluster that can replace the question mark in the series: MIN, NJM, OKL, PLK, ?","options":["A. QWS","B. HGF","C. QMJ","D. UJH"]},
+    {"id":5,"q":"Select the letter-cluster that can replace the question mark in the series: BRF, EUH, HXJ, KAL, ?","options":["A. NMB","B. NKH","C. NHG","D. NDN"]},
+    {"id":6,"q":"Select the letter-cluster that can replace the question mark in the series: WZWT, WVOH, WRGV, WNYJ, ?","options":["A. WJQX","B. WJQW","C. WHPX","D. WIPX"]},
+    {"id":7,"q":"Select the letter-cluster that can replace the question mark in the series: MCFI, NEKP, OGPW, PIUD, ?","options":["A. NKYD","B. QLYL","C. QKZK","D. QKZL"]},
+    {"id":8,"q":"What comes next: 3, 12, 7, 16, 11, 20, 15, ?","options":["A. 16","B. 24","C. 14","D. 18"]},
+    {"id":9,"q":"Each of the letters in the word STUDENT is arranged in alphabetical order. How many letters are there in the English alphabetical series between the letter that is second from the left and the one that is fourth from the right in the new letter-cluster formed?","options":["A. 17","B. 13","C. 11","D. 15"]},
+    {"id":10,"q":"Which of the following addresses are identical to each other?\n1. Arjun Mehta A-101, Emerald Towers, Surat, 395001\n2. Arjun Mehta A-101, Emerald Tower, Surat, 395001\n3. Arjun M. A-101, Emerald Tower, Surat, 395001\n4. Arjun Mehta A-101, Emerald Tower, Surat, 395001","options":["A. 1 and 2","B. 2 and 3","C. 1 and 3","D. All four are identical"]},
+    {"id":11,"q":"Which of the following is/are identical to the address given:\nMeenal Gupta 102, Silver Oaks, Sector 12, Noida, 201301\nOptions:\n1. Meenal Gupta 102, Silver Oaks, Sector 12, Noida, 201301\n2. Meenal Gupta 102, Silver Oaks, Sector-12, Noida, 201301\n3. Meenal Gupta 102, Silver Oaks, Sector 12, Noida 201301\n4. Meenal Gupta 102, Silver Oaks, Sector 12, Noida, 201302","options":["A. 1 only","B. 1 and 2","C. 1 and 3","D. 1,2 and 3"]},
+    {"id":12,"q":"Find the option that best completes the analogy: AG : 10 :: CM : ?","options":["A. KO","B. KU","C. KS","D. S"]},
+    {"id":13,"q":"A is facing North. B is seated second to the right of A. Who is sitting immediately to the left of B?","options":["A. The person seated to the immediate right of A","B. The person seated opposite to A","C. The person seated to the immediate left of A","D. Cannot be determined"]},
+    {"id":14,"q":"TIME : VJOG :: WORD : ?","options":["A. YPTF","B. YQTG","C. YPSF","D. ZPSF"]},
+    {"id":15,"q":"GNIDAER : READING :: NOITULOS : ?","options":["A. SOLUTION","B. SOLUNOIT","C. NOILOSUT","D. POLLUTION"]},
+    {"id":16,"q":"AYRRIC : CATTLE :: NCPDCAR : ?","options":["A. SUBJECTS","B. NEGLECT","C. PERFECT","D. OPERATE"]},
+    {"id":17,"q":"Identify the odd one: 2, 3, 5, 7, 11, 13, 17, 20","options":["A. 17","B. 13","C. 20","D. 1"]},
+    {"id":18,"q":"Which of the following is the odd one out?\nA. 2, 3, 5\nB. 11, 13, 17\nC. 4, 6, 8\nD. 7, 19, 23","options":["A. A","B. B","C. C","D. D"]},
+    {"id":19,"q":"Rani said, “The man in the photo is my mother’s son-in-law.” Who is the man to Rani?","options":["A. Husband","B. Father","C. Uncle","D. Cousin"]},
+    {"id":20,"q":"Identify the group that does NOT follow the same pattern:\nA. K11 : 19 : G7\nB. M13 : K11 : 19\nC. O15 : M13 : K11\nD. N14 : K11 : H8","options":["A. A","B. B","C. C","D. D"]},
+    {"id":21,"q":"Identify the group that does NOT follow the same pattern:\nA. A1@ : B2# : C3$\nB. D4% : E5$ : F6&\nC. G7* : H8( : I9)\nD. J10_ : K11@ : L12@","options":["A. A","B. B","C. C","D. D"]},
+    {"id":22,"q":"Pointing to a man, a woman said, “His mother is the only daughter of my father.” How is the man related to the woman?","options":["A. Son","B. Nephew","C. Cousin","D. Grandson"]},
+    {"id":23,"q":"Pointing to a woman, John says, “She is the wife of my uncle’s only son.” How is the woman related to John?","options":["A. Cousin","B. Sister-in-law","C. Niece","D. Aunt"]},
+    {"id":24,"q":"A man said, “My mother’s husband’s only son is the father of your sister’s brother.” How is the man related to you?","options":["A. Uncle","B. Father","C. Grandfather","D. Brother"]},
+    {"id":25,"q":"If # = ×, @ = –, $ = +, then evaluate: 9 # 2 @ 3 $ 1","options":["A. 18","B. 14","C. 16","D. 17"]}
+  ],
 
+  "General Awareness": [
+    {"id":26,"q":"Which of the following features distinguishes the Elephanta Caves from other rock-cut sites of early India?","options":["A. They are primarily Buddhist caves with large stupas.","B. The caves focus on Shaivite themes and feature sculptural depth through light and shadow.","C. They contain a mix of Jain and Vaishnavite depictions in pillar halls.","D. The caves are entirely monolithic structures from the Mauryan period."]},
+    {"id":27,"q":"Read the statements about the Goncha Festival of Bastar:\n1. Tupki, a mock gun made of bamboo, uses Goncha fruit as bullets.\n2. The chariot procession was started by the Chalukya rulers.\n3. Rath Yatra begins on Ashadh Shukla Dashmi and ends on Dutiya.\nWhich of the above statements are correct?","options":["A. 1 and 2 only","B. 2 and 3 only","C. 1 and 3 only","D. 1, 2 and 3"]},
+    {"id":28,"q":"Fill in the blank:\nIn Carnatic music, a laghu with five beats is known as ___ jaati.","options":["A. Tishra","B. Chaturashra","C. Khanda","D. Mishra"]},
+    {"id":29,"q":"Which of the following statements about Judo is correct?","options":["A. Judo was introduced in 1882 by Jigoro Kano in Japan.","B. India’s first National Judo Championship was held in 1970 at Delhi University.","C. Kalpana Devi won gold at the 2010 Judo World Cup.","D. Judo became an Olympic sport in 1965."]},
+    {"id":30,"q":"Where and when will the 59th National Cross Country Championships – 2025 be held?","options":["A. 10 Jan 2025 – Lucknow, Uttar Pradesh","B. 12 Jan 2025 – Meerut, Uttar Pradesh","C. 15 Jan 2025 – Kanpur, Uttar Pradesh","D. 12 Jan 2025 – Jaipur, Rajasthan"]},
+    {"id":31,"q":"What is the core structural focus of the 2024 India–UAE Bilateral Investment Treaty (BIT) within India’s international investment strategy?","options":["A. Proposes joint sovereign funds and links INR swap with UAE banks.","B. Focuses on pre-establishment rights and UAE-based arbitration.","C. Ensures post-establishment investor confidence via standard and national treatment.","D. Aims at GCC-wide tax regulation under India-led digital framework."]},
+    {"id":32,"q":"The Santosh Trophy 2022-23 final was uniquely held in ___, where Karnataka defeated Meghalaya to win the title after 54 years.","options":["A. Dubai","B. Riyadh","C. Doha","D. Muscat"]},
+    {"id":33,"q":"Which of the following statements best captures the essence of \"Landscapes of Loss: The Story of an Indian Drought\" by Kavitha Iyer?","options":["A. A study on drought’s human and ecological impacts in India.","B. A fictional story about a family in a drought-hit area.","C. A history of monsoon patterns and ancient agriculture in India.","D. A colonial-era policy analysis of water management."]},
+    {"id":34,"q":"Consider the following statements about glacial landforms:\n1. Hanging valleys are often found opening into main glacial valleys at higher elevations.\n2. Spurs of such hanging valleys are frequently truncated into triangular facets.\nWhich of the following statements is/are correct?","options":["A. Only 1","B. Only 2","C. 1 and 2 are correct","D. Neither 1 nor 2 are correct"]},
+    {"id":35,"q":"What is the primary function of the Crew Escape System (CES) on ISRO’s Human Rated LVM3 (HLVM3) rocket?","options":["A. To guide the crew module into its designated low-Earth orbit.","B. To eject the crew module to safety during launch emergencies.","C. To assist in docking the crew module with a space station.","D. To provide thermal shielding during re-entry into Earth’s atmosphere."]},
+    {"id":36,"q":"Which of the following statements about Justice Sanjiv Khanna is/are true?\n1. He is the 51st Chief Justice of India.\n2. He succeeded Justice D.Y. Chandrachud.\n3. He served as CJI from 2023.","options":["A. 1 and 2 only","B. 2 and 3 only","C. 1 and 3 only","D. 1, 2 and 3 all are true"]},
+    {"id":37,"q":"Which of the following objectives are part of the National Population Policy (NPP) 2000?\n1. Providing free and compulsory education up to 14 years of age.\n2. Increasing fertility rate to ensure demographic dividend.\n3. Reducing infant mortality rate below 30 per 1000 live births.\n4. Promoting delayed marriage for girls.","options":["A. Only 1 and 2 are correct","B. Only 1 and 3 are correct","C. Only 1, 3 and 4 are correct","D. 1, 2, 3 and 4 all are correct"]},
+    {"id":38,"q":"Which pathway in cellular respiration generates the most ATP?","options":["A. Glycolysis","B. Krebs cycle","C. Electron transport chain","D. Fermentation"]},
+    {"id":39,"q":"Arrange the following events in chronological order:\na. Eastern Zonal Council meeting 2022\nb. States Reorganisation Act passed\nc. First Central Zonal Council meeting","options":["A. b – c – a","B. c – b – a","C. a – b – c","D. b – a – c"]},
+    {"id":40,"q":"Which of the following most accurately describes the legal character of the right to property under Article 300A of the Indian Constitution?","options":["A. It is a fundamental right guaranteeing compensation for all property acquisitions.","B. It allows the State to deprive a person of property by any law, even without due process.","C. It is a constitutional legal right that permits deprivation only by authority of law.","D. It permits citizens to claim property protection under Article 32 before the Supreme Court."]},
+    {"id":41,"q":"For a rigid body, the angular velocity of any particle about a given axis of rotation is:","options":["A. Proportional to its distance from the axis.","B. The same for all particles.","C. Inversely proportional to its distance from the axis.","D. Always zero."]},
+    {"id":42,"q":"The Bharatiya Sakshya Adhiniyam (BSA) places emphasis on the use of technology to ensure the authenticity of evidence. This is particularly relevant for:","options":["A. Physical exhibits from crime scenes.","B. Hand-written diaries.","C. Digital and electronic evidence.","D. Oral confessions."]},
+    {"id":43,"q":"Read the below statements marked as Assertion (A) and Reason (R):\nAssertion (A): The One Nation One Ration Card ensures portability of food grains.\nReason (R): It uses Aadhaar-enabled biometric authentication.","options":["A. Both A and R are true, and R is the correct explanation of A.","B. Both A and R are true, but R is not the correct explanation of A.","C. A is true, but R is false.","D. A is false, but R is true."]},
+    {"id":44,"q":"Cheraw, the bamboo dance performed using crossed bamboo sticks, is a folk dance of which state?","options":["A. Mizoram","B. Meghalaya","C. Arunachal Pradesh","D. Sikkim"]},
+    {"id":45,"q":"What is a key factor assessed in the Global Firepower Military Strength Ranking 2025?","options":["A. Economic stability","B. Cultural influence","C. Defence budget","D. Healthcare spending"]},
+    {"id":46,"q":"Which of the following correctly describes cooperative-sector industries?","options":["A. Owned and operated by central government agencies.","B. Operated solely for export purposes.","C. Owned by workers or suppliers sharing profits and losses.","D. Maintained by foreign companies with Indian partnerships."]},
+    {"id":47,"q":"Education is now placed under which list after the 42nd Amendment?","options":["A. Union List","B. State List","C. Concurrent List","D. Judicial List"]},
+    {"id":48,"q":"What is the main objective of the National Framework for Climate Services (NFCS) launched in 2024?","options":["A. To set emission trading targets.","B. To regulate groundwater quality.","C. To deliver sector-specific climate information services.","D. To mandate carbon offsetting in the private sector."]},
+    {"id":49,"q":"Argon is produced in Earth’s crust via:","options":["A. Decay of K-40.","B. Volcanic activity.","C. Photosynthesis.","D. Cosmic rays."]},
+    {"id":50,"q":"Which of the following is true about Fundamental Rights and Directive Principles of State Policy (DPSPs)?","options":["A. Both are justiciable and enforceable by courts.","B. DPSPs override Fundamental Rights when in conflict.","C. Fundamental Rights are justiciable, but DPSPs are not.","D. DPSPs are guaranteed by the Constitution; Fundamental Rights are optional."]}
+  ],
+
+  "Quantitative Aptitude": [
+    {"id":51,"q":"Arrange the fractions (3/4), (2/5), (5/7), (3/5) in ascending order.","options":["A. 2/5, 3/5, 3/4, 5/7","B. 2/5, 3/5, 5/7, 3/4","C. 3/5, 2/5, 5/7, 3/4","D. 2/5, 5/7, 3/5, 3/4"]},
+    {"id":52,"q":"Simplify: (26 + 3.6) - 1.9.","options":["A. 27.7","B. 27.9","C. 28.7","D. 27.1"]},
+    {"id":53,"q":"Evaluate: 71 - 6 + (1 - (3 x 3 - 6)).","options":["A. 64","B. 66","C. 68","D. 62"]},
+    {"id":54,"q":"From a sample of 200 software engineers:\nProficient in Python and Java = 50\nPython only = 70\nJava only = 60\nNeither = 20\nWhat is the ratio of those proficient in Python to those proficient in Java?","options":["A. 11 : 12","B. 12 : 11","C. 7 : 6","D. 6 : 7"]},
+    {"id":55,"q":"Arvind started a business by investing ₹80,000. After 4 months Bhavin joined with ₹1,20,000. At the end of 8 months from the start, Chandan joined with ₹1,60,000. If the total profit at the end of the year (12 months) is ₹1,05,000, find Chandan’s share.","options":["A. ₹26,250","B. ₹21,000","C. ₹31,500","D. ₹17,500"]},
+    {"id":56,"q":"A and B start a business. A invests ₹80,000 for 9 months, B invests ₹1,20,000 for 6 months. If total profit is ₹45,000, what is B’s share?","options":["A. ₹20,000","B. ₹25,000","C. ₹27,000","D. ₹30,000"]},
+    {"id":57,"q":"What is the average of all integers between 100 and 250 that are exactly divisible by 11?","options":["A. 176","B. 186","C. 196","D. 166"]},
+    {"id":58,"q":"The average of 15 numbers is 80. The average of the first 6 numbers is 72. The average of the next 6 numbers is 25% more than the average of the first 6 numbers. The 13th number is 8 more than the 15th number, and the 14th number is 10 less than the 15th number. What is the average of the 13th and 14th numbers?","options":["A. 75","B. 76","C. 77","D. 78"]},
+    {"id":59,"q":"A landlord bought a flat for ₹8,00,000. He pays ₹2,000 per month for maintenance and wants a 9% annual return on his investment after maintenance. What should be the monthly rent he charges?","options":["A. ₹7,000","B. ₹7,500","C. ₹8,000","D. ₹8,500"]},
+    {"id":60,"q":"An amount doubles in 5 years at compound interest. How many years will it take for the amount to grow to 8 times its original value?","options":["A. 15 years","B. 16 years","C. 17 years","D. 18 years"]},
+    {"id":61,"q":"A sum becomes ₹6,600 in 2 years and ₹7,920 in 3 years at compound interest. What is the original principal?","options":["A. ₹5,583.33","B. ₹6,000.00","C. ₹5,000.00","D. ₹6,500.00"]},
+    {"id":62,"q":"Suman purchased 25 litres of milk at ₹45 per litre and another 15 litres at ₹50 per litre. She mixed both quantities and sold the entire mixture at ₹48 per litre. What was her total profit or loss?","options":["A. Profit of ₹90","B. Loss of ₹45","C. Profit of ₹45","D. Loss of ₹90"]},
+    {"id":63,"q":"A toy manufacturer produced 1,200 toy cars at a total cost of ₹90,000. He donated 200 cars to charity. For the remaining, he announced a 10% discount on the market price of ₹120 per car and offered 2 free toy cars for every 8 bought. If all 1,200 toy cars were distributed, what is his overall gain or loss percentage?","options":["A. 4% profit","B. 4% loss","C. 5% profit","D. 5% loss"]},
+    {"id":64,"q":"A retailer marks an air conditioner 80% above its cost price. He offers a first discount of 25% on the marked price and then an additional 10% discount on the already discounted price. If the final selling price is ₹15,552, what is the approximate cost price of the air conditioner?","options":["A. ₹79,000","B. ₹79,200","C. ₹71,200","D. ₹71,000"]},
+    {"id":65,"q":"A 40-litre mixture contains juice and water in the ratio 5:3. How much water (in litres) must be added to this mixture to change the ratio of juice to water to 2:3?","options":["A. 5 litres","B. 10 litres","C. 15 litres","D. 25 litres"]},
+    {"id":66,"q":"A can complete a task in 15 days, while B takes 20 days to finish the same task. If they work together for 4 days, what fraction of the work will still remain?","options":["A. 2/15","B. 1/6","C. 3/10","D. 1/5"]},
+    {"id":67,"q":"Two oils priced at ₹90 per kg and ₹150 per kg are blended and sold at ₹144 per kg, achieving a profit margin of 20%. What is the ratio of the two oils in the mixture?","options":["A. 1 : 2","B. 2 : 1","C. 3 : 5","D. 5 : 3"]},
+    {"id":68,"q":"Three pipes A, B and C fill a tank in 6, 8 and 12 hours respectively. All three operate together for 2 hours before C is closed. How much additional time will it take to completely fill the tank after that?","options":["A. 2 hours","B. 2.5 hours","C. 3 hours","D. 4 hours"]},
+    {"id":69,"q":"A bullet train covers a fixed distance in 30 minutes at an average speed of 240 km/h. Due to diversion the distance increases by 20%. If it still must arrive in 30 minutes, what should its new average speed be (in km/h)?","options":["A. 280 km/h","B. 288 km/h","C. 300 km/h","D. 320 km/h"]},
+    {"id":70,"q":"Two cars X and Y start from points 360 km apart. If they move towards each other they meet in 4 hours. If they move in the same direction, they meet in 12 hours. What is the speed of car X? (Assume X is the faster car.)","options":["A. 60 km/h","B. 75 km/h","C. 90 km/h","D. 45 km/h"]},
+    {"id":71,"q":"A circular pizza has radius 21 cm. If 75% of it is eaten, what is the area of pizza remaining? (Use π = 22/7).","options":["A. 173.25 cm²","B. 346.36 cm²","C. 432.25 cm²","D. 115.5 cm²"]},
+    {"id":72,"q":"A ring-shaped disc has outer radius 10 cm and inner radius 7 cm. What is the approximate ratio of the ring’s area to the area of the whole outer circle?","options":["A. 1 : 2","B. 2 : 3","C. 3 : 4","D. 4 : 5"]},
+    {"id":73,"q":"A bicycle wheel has radius 35 cm. What percentage of its circumference is covered in a quarter turn? (Use π = 22/7).","options":["A. 15%","B. 25%","C. 30%","D. 35%"]},
+    {"id":74,"q":"The line y = mx + 5 passes through the point (1, 8). Find m.","options":["A. 3","B. 2","C. 5","D. -3"]},
+    {"id":75,"q":"313 + 183 - 373 + 210 is equal to:","options":["A. -368","B. -148","C. -456","D. -234"]}
+  ],
+
+  "English Comprehension": [
+    {"id":76,"q":"Select the most appropriate synonym of the given word: PERFIDIOUS","options":["A. Honest","B. Faithful","C. Treacherous","D. Loyal"]},
+    {"id":77,"q":"Choose the correct meaning of the idiom “Hobson’s Choice.”","options":["A. A dilemma between two evils","B. A free and fair decision","C. No real choice at all","D. A selection made under duress"]},
+    {"id":78,"q":"Select the most appropriate antonym of the given word: Perfidious","options":["A. Betraying","B. Faithless","C. Treacherous","D. Loyal"]},
+    {"id":79,"q":"Identify the misspelt word.","options":["A. Vicereine","B. Floccinaucinihilipilification","C. Defenestrate","D. Quintessance"]},
+    {"id":80,"q":"Spot the correct spelling of a CSF-shunt procedure.","options":["A. Ventriculoperitoneal","B. Ventriculoperitonal","C. Ventriculaperitoneal","D. Ventriculoperetoneal"]},
+    {"id":81,"q":"Choose the correct one-word substitute for: \"An official reprimand or strong criticism.\"","options":["A. Accusation","B. Denunciation","C. Censure","D. Indictment"]},
+    {"id":82,"q":"The startup scaled so rapidly that its infrastructure could ___ keep pace.","options":["A. Barely","B. Merely","C. Scarcely","D. All but"]},
+    {"id":83,"q":"Rare though the phenomenon is, it can occur ___ prolonged drought conditions.","options":["A. Towards","B. Amid","C. Among","D. During"]},
+    {"id":84,"q":"While the proposal appeared pragmatic on paper, its implementation proved ___ complicated than expected.","options":["A. Less","B. Much","C. Rather","D. More"]},
+    {"id":85,"q":"Find the part of the sentence that contains an error:\nThat the report failed to address the root causes (1) / of the community unrest were surprising (2) / given the exhaustive data (3) / compiled over several months. (4)","options":["A. (1)","B. (2)","C. (3)","D. (4)"]},
+    {"id":86,"q":"Find the part of the sentence that contains an error:\nWhat renders the draft legislation particularly contentious is not its proposed realignment of fiscal powers per se, (1) / but that it presumes, without empirical substantiation, (2) / a fiscal equivalence among states whose developmental baselines are (3) / incommensurable by any normative metric. (4)","options":["A. (1)","B. (2)","C. (3)","D. (4)"]},
+    {"id":87,"q":"Change the following from active to passive voice:\nThey have been neglecting maintenance of the archives for years.","options":["A. Maintenance of the archives had been neglected by them for years.","B. Maintenance of the archives is being neglected by them for years.","C. Maintenance of the archives was being neglected by them for years.","D. Maintenance of the archives has been being neglected by them for years."]},
+    {"id":88,"q":"Select the sentence containing the homonym of the highlighted word:\nThe choir began the introit at the priest’s signal.","options":["A. The child sang the introit during the intermission.","B. The introit was replaced by an organ improvisation.","C. The missal included Latin text for the introit.","D. The cantor rehearsed the Sunday introit."]},
+    {"id":89,"q":"Convert the sentence from passive to active voice:\nIt was being suggested by multiple sources that the operation had been compromised internally.","options":["A. Multiple sources suggested the operation was compromised internally.","B. The operation was compromised, multiple sources suggested.","C. Sources were suggesting an operation compromise.","D. The operation had compromised multiple internal sources."]},
+    {"id":90,"q":"Comprehension Passage:\n\nWhile education and wisdom are often conflated in everyday discourse, a discerning mind perceives a fundamental difference between the two. Education is the formal acquisition of knowledge, usually measured through degrees, academic achievements, and proficiency in structured disciplines. It is delivered through systematic curricula, institutional assessments, and theoretical frameworks.\n\nHowever, wisdom transcends this rigidity; it is the judicious application of knowledge to real-life situations, enriched by experience, introspection, and emotional intelligence. An individual may be highly educated yet lack wisdom if they are unable to apply their learning ethically and effectively. Conversely, many wise individuals — farmers, artisans, elders — may not possess formal education, but their decisions exhibit prudence and sagacity cultivated through lived experience.\n\nThus, education equips the mind, but wisdom enriches the soul. In an era dominated by information overload and algorithmic thinking, the gap between the two has widened. Educational institutions often prioritise rote memorisation and standardised testing over critical thinking and moral reasoning. Consequently, society produces people skilled in problem-solving but deficient in decision-making that requires empathy, patience, or foresight.\n\nWisdom, being innately human, cannot be downloaded or fast-tracked; it is earned through trial, failure, reflection, and a nuanced understanding of human nature. Furthermore, while education is temporally bounded — ending with formal schooling or academic milestones — wisdom is a lifelong pursuit. It does not boast certificates but manifests in humility, ethical consistency, and the ability to navigate ambiguity with grace.\n\nUltimately, the highest form of intelligence lies not merely in knowing what is right, but in consistently choosing to do it, especially when it is inconvenient.\n\nQ90. According to the passage, how is wisdom primarily acquired?","options":["A. Through textbooks","B. Through emotional detachment","C. Through experience and reflection","D. Through algorithmic thinking"]},
+    {"id":91,"q":"What does the author mean by \"wisdom enriches the soul\"?","options":["A. It enhances academic success.","B. It fosters deeper moral insight.","C. It improves verbal expression.","D. It sharpens mathematical skills."]},
+    {"id":92,"q":"According to the author, who can be wise despite lacking formal education?","options":["A. Scientists","B. School children","C. Elders and artisans","D. Technocrats"]},
+    {"id":93,"q":"What is the central contrast drawn in the passage?","options":["A. Education vs. career","B. Intelligence vs. memory","C. Reading vs. writing","D. Formal learning vs. applied wisdom"]},
+    {"id":94,"q":"According to the passage, why has the gap between education and wisdom widened in recent times?","options":["A. Due to overuse of social media","B. Because wisdom is no longer valued","C. Because of rote learning and algorithmic methods","D. Because people stop learning after school"]},
+    {"id":95,"q":"She has the reputation to be a kind woman.\nChoose the best replacement for the highlighted part.","options":["A. To have kindness","B. Of being a kind woman","C. Of being the kind woman","D. To be kind-hearted"]},
+    {"id":96,"q":"The doctor advised him to avoid eating sweets and doing exercise regularly.\nChoose the most suitable replacement.","options":["A. Avoiding sweets and doing regular exercise","B. To avoid sweets and to exercise regularly","C. To avoid eating sweets and to exercise regularly","D. To not eat sweets and do exercises"]},
+    {"id":97,"q":"He asked me, \"Have you done your homework?\"\nChoose the correct indirect speech.","options":["A. He asked me if I had done my homework.","B. He asked me have I done my homework.","C. He asked me whether I have done my homework.","D. He asked me whether had I done my homework."]},
+    {"id":98,"q":"He said that he would join the meeting after lunch.\nChoose the correct direct speech.","options":["A. \"I will join the meeting after lunch,\" he said.","B. \"I would join the meeting after lunch,\" he said.","C. \"I shall join the meeting after lunch,\" he said.","D. \"I can join the meeting after lunch,\" he said."]},
+    {"id":99,"q":"Rearrange the following sentences in correct order to make a logical passage:\n1. A media strategy was framed based on outreach results.\n2. Demographic metrics were tracked from campaign dashboards.\n3. User interactions were collected across platforms.\n4. Analysts segmented users by age and behaviour.","options":["A. 3 – 2 – 4 – 1","B. 2 – 3 – 1 – 4","C. 3 – 1 – 4 – 2","D. 4 – 1 – 2 – 3"]},
+    {"id":100,"q":"Rearrange the following sentences to form a coherent paragraph:\n1. It is a process that involves the systematic and objective investigation of a subject to discover new facts or confirm existing ones.\n2. Research is a foundational pillar of academic and scientific progress.\n3. This can be either theoretical, aiming to expand knowledge, or applied, seeking to solve a practical problem.\n4. The findings of this investigation are then documented and peer-reviewed to ensure validity and credibility.","options":["A. 2, 1, 3, 4","B. 1, 2, 4, 3","C. 4, 3, 2, 1","D. 3, 4, 1, 2"]}
+  ]
+};
+
+/* State and functions */
 const state = {
-  sections: [],           // section names
+  sections: Object.keys(QUESTIONS),
   currentSection: null,
-  index: 0,               // index within current section
-  answers: {},            // key "Section-id" => selected option text
-  marked: {},             // key => true
-  skipped: {},            // key => true when saved without selecting (turns red)
-  timer: 60 * 60,         // 60 minutes (seconds)
+  index: 0,
+  answers: {},
+  marked: {},
+  skipped: {},
+  timer: 60 * 60,
   timerInterval: null,
   submitted: false,
   reviewMode: false
 };
 
-/* --- Utility helpers --- */
 const el = id => document.getElementById(id);
 const formatTime = s => {
   const mm = String(Math.floor(s/60)).padStart(2,'0');
   const ss = String(s%60).padStart(2,'0');
   return `${mm}:${ss}`;
 };
+
 function updateTotals(){
   const total = Object.values(state.answers).filter(Boolean).length;
   el('totalAnswered').innerText = total;
   el('footerAnswered').innerText = total;
 }
 
-/* --- Build UI --- */
+/* Init UI */
 function initUI(){
-  // sections list
-  state.sections = Object.keys(QUESTIONS);
   if(state.sections.length === 0){
-    el('qText').innerText = "No questions loaded yet. Paste Part B (questions) after this code.";
+    el('qText').innerText = "No questions found.";
     return;
   }
   state.currentSection = state.sections[0];
@@ -196,7 +303,7 @@ function initUI(){
     const b = document.createElement('button');
     b.className = 'section-btn' + (s === state.currentSection ? ' active' : '');
     b.innerText = s;
-    b.onclick = () => { state.currentSection = s; state.index = 0; refresh(); };
+    b.onclick = () => { state.currentSection = s; state.index = 0; renderQuestion(); buildGrid(); updateSectionSummary(); };
     el('sectionList').appendChild(b);
   });
   buildGrid();
@@ -204,7 +311,6 @@ function initUI(){
   startTimer();
 }
 
-/* --- Question grid --- */
 function buildGrid(){
   const wrap = el('qGrid'); wrap.innerHTML = '';
   const list = QUESTIONS[state.currentSection] || [];
@@ -223,7 +329,6 @@ function buildGrid(){
   updateSectionSummary();
 }
 
-/* --- Section summary --- */
 function updateSectionSummary(){
   const list = QUESTIONS[state.currentSection] || [];
   const answered = list.reduce((a,q)=> a + (state.answers[`${state.currentSection}-${q.id}`] ? 1 : 0), 0);
@@ -231,20 +336,17 @@ function updateSectionSummary(){
   el('secNotAnswered').innerText = list.length - answered;
 }
 
-/* --- Render current question --- */
 function renderQuestion(){
   const list = QUESTIONS[state.currentSection];
-  if(!list || list.length === 0) { el('qText').innerText = "No questions in this section."; return; }
+  if(!list || list.length === 0){ el('qText').innerText = "No questions in this section."; return; }
   const q = list[state.index];
   el('qHeader').innerText = `Section: ${state.currentSection}  —  Q${q.id}`;
-  // show question text (allow simple HTML)
   el('qText').innerHTML = q.q.replace(/\n/g,'<br>');
   const optsWrap = el('optsWrap'); optsWrap.innerHTML = '';
   const key = `${state.currentSection}-${q.id}`;
-  list[state.index].options.forEach((optText, i) => {
+  list[state.index].options.forEach((optText) => {
     const lab = document.createElement('label');
     lab.className = 'opt';
-    // highlight in review mode
     if(state.reviewMode){
       if(q.correct && optText === q.correct) lab.style.borderColor = '#63c276';
       if(state.answers[key] && state.answers[key] === optText && q.correct && optText !== q.correct) lab.style.background = '#fff0f0';
@@ -260,7 +362,6 @@ function renderQuestion(){
       state.answers[key] = optText;
       state.skipped[key] = false;
       buildGrid(); updateTotals(); updateSectionSummary();
-      // ensure radio checked
       radio.checked = true;
     };
     optsWrap.appendChild(lab);
@@ -270,33 +371,22 @@ function renderQuestion(){
   updateSectionSummary();
 }
 
-/* --- Navigation actions --- */
 function saveAndNext(){
   const list = QUESTIONS[state.currentSection];
   const q = list[state.index];
   const key = `${state.currentSection}-${q.id}`;
-  // if no answer selected, mark as skipped (red)
-  if(!state.answers[key]){
-    state.skipped[key] = true;
-  } else {
-    state.skipped[key] = false;
-  }
-  // advance index
+  if(!state.answers[key]) state.skipped[key] = true;
+  else state.skipped[key] = false;
   if(state.index < list.length - 1) state.index++;
   else {
-    // if end of section, go to next section start if any
     const si = state.sections.indexOf(state.currentSection);
-    if(si < state.sections.length -1){
-      state.currentSection = state.sections[si+1];
-      state.index = 0;
-    }
+    if(si < state.sections.length -1){ state.currentSection = state.sections[si+1]; state.index = 0; }
   }
   renderQuestion();
 }
 
 function goPrev(){
   if(state.index > 0){ state.index--; renderQuestion(); return; }
-  // if at first question of section, move to previous section's last
   const si = state.sections.indexOf(state.currentSection);
   if(si > 0){
     state.currentSection = state.sections[si-1];
@@ -305,24 +395,24 @@ function goPrev(){
     renderQuestion();
   }
 }
+
 function clearResponse(){
   const list = QUESTIONS[state.currentSection];
   const q = list[state.index];
   const key = `${state.currentSection}-${q.id}`;
   delete state.answers[key];
-  state.skipped[key] = true; // treat cleared as skipped until user selects and saves
+  state.skipped[key] = true;
   buildGrid(); updateTotals(); updateSectionSummary(); renderQuestion();
 }
+
 function markForReview(){
   const list = QUESTIONS[state.currentSection];
   const q = list[state.index];
   const key = `${state.currentSection}-${q.id}`;
   state.marked[key] = true;
-  // auto advance like Save & Next
   saveAndNext();
 }
 
-/* --- Timer --- */
 function startTimer(){
   if(state.timerInterval) clearInterval(state.timerInterval);
   el('timeBox').innerText = formatTime(state.timer);
@@ -333,7 +423,6 @@ function startTimer(){
   },1000);
 }
 
-/* --- Submit & Results --- */
 function calculateResults(){
   const res = {};
   state.sections.forEach(sec => {
@@ -345,11 +434,7 @@ function calculateResults(){
       if(!ans) unans++;
       else if(q.correct && ans === q.correct) right++;
       else if(q.correct && ans !== q.correct) wrong++;
-      else {
-        // If correct answers are not provided, we can't calculate — treat as unscored
-        // but still count attempted/unattempted.
-        if(ans) right += 0;
-      }
+      else { if(ans) {} }
     });
     res[sec] = {
       total: list.length,
@@ -363,47 +448,40 @@ function calculateResults(){
 
 function showResults(){
   const res = calculateResults();
-  // hide main layout
   document.querySelector('.layout').style.display = 'none';
   el('resultsArea').style.display = 'block';
   const wrap = el('resultsTable');
   let html = '<table><thead><tr><th>Section</th><th>Total Qs</th><th>Attempted</th><th>Right</th><th>Wrong</th><th>Unanswered</th><th>Marks</th></tr></thead><tbody>';
   for(const sec of state.sections){
     const r = res[sec];
-    html += `<tr><td style="font-weight:800;color:${getComputedStyle(document.documentElement).getPropertyValue('--blue')||'#153d7a'}">${sec}</td><td>${r.total}</td><td>${r.attempted}</td><td>${r.right}</td><td>${r.wrong}</td><td>${r.unans}</td><td style="font-weight:800">${r.marks}</td></tr>`;
+    html += `<tr><td style="font-weight:800;color:#153d7a">${sec}</td><td>${r.total}</td><td>${r.attempted}</td><td>${r.right}</td><td>${r.wrong}</td><td>${r.unans}</td><td style="font-weight:800">${r.marks}</td></tr>`;
   }
   const totalMarks = Object.values(res).reduce((a,b)=> a + b.marks, 0);
   html += `</tbody></table><div style="margin-top:12px;font-weight:900">Total Marks: ${totalMarks}</div>`;
   wrap.innerHTML = html;
 }
 
-/* main submit flow */
 function doSubmit(){
   if(state.timerInterval) clearInterval(state.timerInterval);
   state.submitted = true;
   showResults();
 }
 
-/* review mode */
 function startReview(){
   state.reviewMode = true;
   state.submitted = false;
   el('resultsArea').style.display = 'none';
   document.querySelector('.layout').style.display = 'flex';
-  // reset view to first section
   state.currentSection = state.sections[0];
   state.index = 0;
   renderQuestion();
 }
 
-/* restart page */
 function restart(){
   location.reload();
 }
 
-/* Wire up DOM events */
 document.addEventListener('DOMContentLoaded', ()=>{
-  // Hook buttons
   el('saveNextBtn').onclick = saveAndNext;
   el('prevBtn').onclick = goPrev;
   el('clearBtn').onclick = clearResponse;
@@ -412,794 +490,8 @@ document.addEventListener('DOMContentLoaded', ()=>{
   el('startReviewBtn').onclick = startReview;
   el('restartBtn').onclick = restart;
   el('reviewAnswersBtn').onclick = ()=> { alert('Use Submit -> Review Your Answers after submission.'); };
-
-  // If QUESTIONS already present (Part B loaded before this script), init
-  if(Object.keys(QUESTIONS).length > 0){
-    initUI();
-  } else {
-    // Poll for QUESTIONS for a short while (in case Part B is pasted after)
-    let tries = 0;
-    const poll = setInterval(()=>{
-      tries++;
-      if(Object.keys(QUESTIONS).length > 0){ clearInterval(poll); initUI(); }
-      if(tries > 50){ clearInterval(poll); /* give up */ }
-    }, 200);
-  }
+  initUI();
 });
 </script>
-
-<!-- IMPORTANT: Paste Part B (questions JSON & data) here AFTER this line -->
-<!-- PART B should set the QUESTIONS variable and then call initUI() if needed. -->
-<!-- PART B: Questions data (Q26 - Q100) -->
-<script>
-QUESTIONS = {
-  "Reasoning": [
-    /* You said reasoning (Q1-25) is already added — left empty here.
-       If you want me to include Q1–Q25, tell me and I will paste them. */
-  ],
-
-  "General Awareness": [
-    {
-      id: 26,
-      q: `Which of the following features distinguishes the Elephanta Caves from other rock-cut sites of early India?`,
-      options: [
-        "A. They are primarily Buddhist caves with large stupas.",
-        "B. The caves focus on Shaivite themes and feature sculptural depth through light and shadow.",
-        "C. They contain a mix of Jain and Vaishnavite depictions in pillar halls.",
-        "D. The caves are entirely monolithic structures from the Mauryan period."
-      ]
-    },
-    {
-      id: 27,
-      q: `Read the statements about the Goncha Festival of Bastar:\n1. Tupki, a mock gun made of bamboo, uses Goncha fruit as bullets.\n2. The chariot procession was started by the Chalukya rulers.\n3. Rath Yatra begins on Ashadh Shukla Dashmi and ends on Dutiya.\nWhich of the above statements are correct?`,
-      options: [
-        "A. 1 and 2 only",
-        "B. 2 and 3 only",
-        "C. 1 and 3 only",
-        "D. 1, 2 and 3"
-      ]
-    },
-    {
-      id: 28,
-      q: `Fill in the blank:\nIn Carnatic music, a laghu with five beats is known as ___ jaati.`,
-      options: [
-        "A. Tishra",
-        "B. Chaturashra",
-        "C. Khanda",
-        "D. Mishra"
-      ]
-    },
-    {
-      id: 29,
-      q: `Which of the following statements about Judo is correct?`,
-      options: [
-        "A. Judo was introduced in 1882 by Jigoro Kano in Japan.",
-        "B. India’s first National Judo Championship was held in 1970 at Delhi University.",
-        "C. Kalpana Devi won gold at the 2010 Judo World Cup.",
-        "D. Judo became an Olympic sport in 1965."
-      ]
-    },
-    {
-      id: 30,
-      q: `Where and when will the 59th National Cross Country Championships – 2025 be held?`,
-      options: [
-        "A. 10 Jan 2025 – Lucknow, Uttar Pradesh",
-        "B. 12 Jan 2025 – Meerut, Uttar Pradesh",
-        "C. 15 Jan 2025 – Kanpur, Uttar Pradesh",
-        "D. 12 Jan 2025 – Jaipur, Rajasthan"
-      ]
-    },
-    {
-      id: 31,
-      q: `What is the core structural focus of the 2024 India–UAE Bilateral Investment Treaty (BIT) within India’s international investment strategy?`,
-      options: [
-        "A. Proposes joint sovereign funds and links INR swap with UAE banks.",
-        "B. Focuses on pre-establishment rights and UAE-based arbitration.",
-        "C. Ensures post-establishment investor confidence via standard and national treatment.",
-        "D. Aims at GCC-wide tax regulation under India-led digital framework."
-      ]
-    },
-    {
-      id: 32,
-      q: `The Santosh Trophy 2022-23 final was uniquely held in ___, where Karnataka defeated Meghalaya to win the title after 54 years.`,
-      options: [
-        "A. Dubai",
-        "B. Riyadh",
-        "C. Doha",
-        "D. Muscat"
-      ]
-    },
-    {
-      id: 33,
-      q: `Which of the following statements best captures the essence of "Landscapes of Loss: The Story of an Indian Drought" by Kavitha Iyer?`,
-      options: [
-        "A. A study on drought’s human and ecological impacts in India.",
-        "B. A fictional story about a family in a drought-hit area.",
-        "C. A history of monsoon patterns and ancient agriculture in India.",
-        "D. A colonial-era policy analysis of water management."
-      ]
-    },
-    {
-      id: 34,
-      q: `Consider the following statements about glacial landforms:\n1. Hanging valleys are often found opening into main glacial valleys at higher elevations.\n2. Spurs of such hanging valleys are frequently truncated into triangular facets.\nWhich of the following statements is/are correct?`,
-      options: [
-        "A. Only 1",
-        "B. Only 2",
-        "C. 1 and 2 are correct",
-        "D. Neither 1 nor 2 are correct"
-      ]
-    },
-    {
-      id: 35,
-      q: `What is the primary function of the Crew Escape System (CES) on ISRO’s Human Rated LVM3 (HLVM3) rocket?`,
-      options: [
-        "A. To guide the crew module into its designated low-Earth orbit.",
-        "B. To eject the crew module to safety during launch emergencies.",
-        "C. To assist in docking the crew module with a space station.",
-        "D. To provide thermal shielding during re-entry into Earth’s atmosphere."
-      ]
-    },
-    {
-      id: 36,
-      q: `Which of the following statements about Justice Sanjiv Khanna is/are true?\n1. He is the 51st Chief Justice of India.\n2. He succeeded Justice D.Y. Chandrachud.\n3. He served as CJI from 2023.\nChoose the correct option.`,
-      options: [
-        "A. 1 and 2 only",
-        "B. 2 and 3 only",
-        "C. 1 and 3 only",
-        "D. 1, 2 and 3 all are true"
-      ]
-    },
-    {
-      id: 37,
-      q: `Which of the following objectives are part of the National Population Policy (NPP) 2000?\n1. Providing free and compulsory education up to 14 years of age.\n2. Increasing fertility rate to ensure demographic dividend.\n3. Reducing infant mortality rate below 30 per 1000 live births.\n4. Promoting delayed marriage for girls.`,
-      options: [
-        "A. Only 1 and 2 are correct",
-        "B. Only 1 and 3 are correct",
-        "C. Only 1, 3 and 4 are correct",
-        "D. 1, 2, 3 and 4 all are correct"
-      ]
-    },
-    {
-      id: 38,
-      q: `Which pathway in cellular respiration generates the most ATP?`,
-      options: [
-        "A. Glycolysis",
-        "B. Krebs cycle",
-        "C. Electron transport chain",
-        "D. Fermentation"
-      ]
-    },
-    {
-      id: 39,
-      q: `Arrange the following events in chronological order:\na. Eastern Zonal Council meeting 2022\nb. States Reorganisation Act passed\nc. First Central Zonal Council meeting`,
-      options: [
-        "A. b – c – a",
-        "B. c – b – a",
-        "C. a – b – c",
-        "D. b – a – c"
-      ]
-    },
-    {
-      id: 40,
-      q: `Which of the following most accurately describes the legal character of the right to property under Article 300A of the Indian Constitution?`,
-      options: [
-        "A. It is a fundamental right guaranteeing compensation for all property acquisitions.",
-        "B. It allows the State to deprive a person of property by any law, even without due process.",
-        "C. It is a constitutional legal right that permits deprivation only by authority of law.",
-        "D. It permits citizens to claim property protection under Article 32 before the Supreme Court."
-      ]
-    },
-    {
-      id: 41,
-      q: `For a rigid body, the angular velocity of any particle about a given axis of rotation is:`,
-      options: [
-        "A. Proportional to its distance from the axis.",
-        "B. The same for all particles.",
-        "C. Inversely proportional to its distance from the axis.",
-        "D. Always zero."
-      ]
-    },
-    {
-      id: 42,
-      q: `The Bharatiya Sakshya Adhiniyam (BSA) places emphasis on the use of technology to ensure the authenticity of evidence. This is particularly relevant for:`,
-      options: [
-        "A. Physical exhibits from crime scenes.",
-        "B. Hand-written diaries.",
-        "C. Digital and electronic evidence.",
-        "D. Oral confessions."
-      ]
-    },
-    {
-      id: 43,
-      q: `Read the below statements marked as Assertion (A) and Reason (R):\nAssertion (A): The One Nation One Ration Card ensures portability of food grains.\nReason (R): It uses Aadhaar-enabled biometric authentication.\nChoose the correct option.`,
-      options: [
-        "A. Both A and R are true, and R is the correct explanation of A.",
-        "B. Both A and R are true, but R is not the correct explanation of A.",
-        "C. A is true, but R is false.",
-        "D. A is false, but R is true."
-      ]
-    },
-    {
-      id: 44,
-      q: `Cheraw, the bamboo dance performed using crossed bamboo sticks, is a folk dance of which state?`,
-      options: [
-        "A. Mizoram",
-        "B. Meghalaya",
-        "C. Arunachal Pradesh",
-        "D. Sikkim"
-      ]
-    },
-    {
-      id: 45,
-      q: `What is a key factor assessed in the Global Firepower Military Strength Ranking 2025?`,
-      options: [
-        "A. Economic stability",
-        "B. Cultural influence",
-        "C. Defence budget",
-        "D. Healthcare spending"
-      ]
-    },
-    {
-      id: 46,
-      q: `Which of the following correctly describes cooperative-sector industries?`,
-      options: [
-        "A. Owned and operated by central government agencies.",
-        "B. Operated solely for export purposes.",
-        "C. Owned by workers or suppliers sharing profits and losses.",
-        "D. Maintained by foreign companies with Indian partnerships."
-      ]
-    },
-    {
-      id: 47,
-      q: `Education is now placed under which list after the 42nd Amendment?`,
-      options: [
-        "A. Union List",
-        "B. State List",
-        "C. Concurrent List",
-        "D. Judicial List"
-      ]
-    },
-    {
-      id: 48,
-      q: `What is the main objective of the National Framework for Climate Services (NFCS) launched in 2024?`,
-      options: [
-        "A. To set emission trading targets.",
-        "B. To regulate groundwater quality.",
-        "C. To deliver sector-specific climate information services.",
-        "D. To mandate carbon offsetting in the private sector."
-      ]
-    },
-    {
-      id: 49,
-      q: `Argon is produced in Earth’s crust via:`,
-      options: [
-        "A. Decay of K-40.",
-        "B. Volcanic activity.",
-        "C. Photosynthesis.",
-        "D. Cosmic rays."
-      ]
-    },
-    {
-      id: 50,
-      q: `Which of the following is true about Fundamental Rights and Directive Principles of State Policy (DPSPs)?`,
-      options: [
-        "A. Both are justiciable and enforceable by courts.",
-        "B. DPSPs override Fundamental Rights when in conflict.",
-        "C. Fundamental Rights are justiciable, but DPSPs are not.",
-        "D. DPSPs are guaranteed by the Constitution; Fundamental Rights are optional."
-      ]
-    }
-  ],
-
-  "Quantitative Aptitude": [
-    {
-      id: 51,
-      q: `Arrange the fractions \\( \\frac{3}{4}, \\frac{2}{5}, \\frac{5}{7}, \\frac{3}{5} \\) in ascending order.`,
-      options: [
-        "A. \\( \\frac{2}{5}, \\frac{3}{5}, \\frac{3}{4}, \\frac{5}{7} \\)",
-        "B. \\( \\frac{2}{5}, \\frac{3}{5}, \\frac{5}{7}, \\frac{3}{4} \\)",
-        "C. \\( \\frac{3}{5}, \\frac{2}{5}, \\frac{5}{7}, \\frac{3}{4} \\)",
-        "D. \\( \\frac{2}{5}, \\frac{5}{7}, \\frac{3}{5}, \\frac{3}{4} \\)"
-      ]
-    },
-    {
-      id: 52,
-      q: `Simplify: (26 + 3.6) - 1.9.`,
-      options: [
-        "A. 27.7",
-        "B. 27.9",
-        "C. 28.7",
-        "D. 27.1"
-      ]
-    },
-    {
-      id: 53,
-      q: `Evaluate: 71 - 6 + (1 - (3 x 3 - 6)).`,
-      options: [
-        "A. 64",
-        "B. 66",
-        "C. 68",
-        "D. 62"
-      ]
-    },
-    {
-      id: 54,
-      q: `From a sample of 200 software engineers:\nProficient in Python and Java = 50\nPython only = 70\nJava only = 60\nNeither = 20\nWhat is the ratio of those proficient in Python to those proficient in Java?`,
-      options: [
-        "A. 11 : 12",
-        "B. 12 : 11",
-        "C. 7 : 6",
-        "D. 6 : 7"
-      ]
-    },
-    {
-      id: 55,
-      q: `Arvind started a business by investing ₹80,000. After 4 months Bhavin joined with ₹1,20,000. At the end of 8 months from the start, Chandan joined with ₹1,60,000. If the total profit at the end of the year (12 months) is ₹1,05,000, find Chandan’s share.`,
-      options: [
-        "A. ₹26,250",
-        "B. ₹21,000",
-        "C. ₹31,500",
-        "D. ₹17,500"
-      ]
-    },
-    {
-      id: 56,
-      q: `A and B start a business. A invests ₹80,000 for 9 months, B invests ₹1,20,000 for 6 months. If total profit is ₹45,000, what is B’s share?`,
-      options: [
-        "A. ₹20,000",
-        "B. ₹25,000",
-        "C. ₹27,000",
-        "D. ₹30,000"
-      ]
-    },
-    {
-      id: 57,
-      q: `What is the average of all integers between 100 and 250 that are exactly divisible by 11?`,
-      options: [
-        "A. 176",
-        "B. 186",
-        "C. 196",
-        "D. 166"
-      ]
-    },
-    {
-      id: 58,
-      q: `The average of 15 numbers is 80. The average of the first 6 numbers is 72. The average of the next 6 numbers is 25% more than the average of the first 6 numbers. The 13th number is 8 more than the 15th number, and the 14th number is 10 less than the 15th number. What is the average of the 13th and 14th numbers?`,
-      options: [
-        "A. 75",
-        "B. 76",
-        "C. 77",
-        "D. 78"
-      ]
-    },
-    {
-      id: 59,
-      q: `A landlord bought a flat for ₹8,00,000. He pays ₹2,000 per month for maintenance and wants a 9% annual return on his investment after maintenance. What should be the monthly rent he charges?`,
-      options: [
-        "A. ₹7,000",
-        "B. ₹7,500",
-        "C. ₹8,000",
-        "D. ₹8,500"
-      ]
-    },
-    {
-      id: 60,
-      q: `An amount doubles in 5 years at compound interest. How many years will it take for the amount to grow to 8 times its original value?`,
-      options: [
-        "A. 15 years",
-        "B. 16 years",
-        "C. 17 years",
-        "D. 18 years"
-      ]
-    },
-    {
-      id: 61,
-      q: `A sum becomes ₹6,600 in 2 years and ₹7,920 in 3 years at compound interest. What is the original principal?`,
-      options: [
-        "A. ₹5,583.33",
-        "B. ₹6,000.00",
-        "C. ₹5,000.00",
-        "D. ₹6,500.00"
-      ]
-    },
-    {
-      id: 62,
-      q: `Suman purchased 25 litres of milk at ₹45 per litre and another 15 litres at ₹50 per litre. She mixed both quantities and sold the entire mixture at ₹48 per litre. What was her total profit or loss?`,
-      options: [
-        "A. Profit of ₹90",
-        "B. Loss of ₹45",
-        "C. Profit of ₹45",
-        "D. Loss of ₹90"
-      ]
-    },
-    {
-      id: 63,
-      q: `A toy manufacturer produced 1,200 toy cars at a total cost of ₹90,000. He donated 200 cars to charity. For the remaining, he announced a 10% discount on the market price of ₹120 per car and offered 2 free toy cars for every 8 bought. If all 1,200 toy cars were distributed, what is his overall gain or loss percentage?`,
-      options: [
-        "A. 4% profit",
-        "B. 4% loss",
-        "C. 5% profit",
-        "D. 5% loss"
-      ]
-    },
-    {
-      id: 64,
-      q: `A retailer marks an air conditioner 80% above its cost price. He offers a first discount of 25% on the marked price and then an additional 10% discount on the already discounted price. If the final selling price is ₹15,552, what is the approximate cost price of the air conditioner?`,
-      options: [
-        "A. ₹79,000",
-        "B. ₹79,200",
-        "C. ₹71,200",
-        "D. ₹71,000"
-      ]
-    },
-    {
-      id: 65,
-      q: `A 40-litre mixture contains juice and water in the ratio 5:3. How much water (in litres) must be added to this mixture to change the ratio of juice to water to 2:3?`,
-      options: [
-        "A. 5 litres",
-        "B. 10 litres",
-        "C. 15 litres",
-        "D. 25 litres"
-      ]
-    },
-    {
-      id: 66,
-      q: `A can complete a task in 15 days, while B takes 20 days to finish the same task. If they work together for 4 days, what fraction of the work will still remain?`,
-      options: [
-        "A. 2/15",
-        "B. 1/6",
-        "C. 3/10",
-        "D. 1/5"
-      ]
-    },
-    {
-      id: 67,
-      q: `Two oils priced at ₹90 per kg and ₹150 per kg are blended and sold at ₹144 per kg, achieving a profit margin of 20%. What is the ratio of the two oils in the mixture?`,
-      options: [
-        "A. 1 : 2",
-        "B. 2 : 1",
-        "C. 3 : 5",
-        "D. 5 : 3"
-      ]
-    },
-    {
-      id: 68,
-      q: `Three pipes A, B and C fill a tank in 6, 8 and 12 hours respectively. All three operate together for 2 hours before C is closed. How much additional time will it take to completely fill the tank after that?`,
-      options: [
-        "A. 2 hours",
-        "B. 2.5 hours",
-        "C. 3 hours",
-        "D. 4 hours"
-      ]
-    },
-    {
-      id: 69,
-      q: `A bullet train covers a fixed distance in 30 minutes at an average speed of 240 km/h. Due to diversion the distance increases by 20%. If it still must arrive in 30 minutes, what should its new average speed be (in km/h)?`,
-      options: [
-        "A. 280 km/h",
-        "B. 288 km/h",
-        "C. 300 km/h",
-        "D. 320 km/h"
-      ]
-    },
-    {
-      id: 70,
-      q: `Two cars X and Y start from points 360 km apart. If they move towards each other they meet in 4 hours. If they move in the same direction, they meet in 12 hours. What is the speed of car X? (Assume X is the faster car.)`,
-      options: [
-        "A. 60 km/h",
-        "B. 75 km/h",
-        "C. 90 km/h",
-        "D. 45 km/h"
-      ]
-    },
-    {
-      id: 71,
-      q: `A circular pizza has radius 21 cm. If 75% of it is eaten, what is the area of pizza remaining? (Use \\( \\pi = 22/7 \\)).`,
-      options: [
-        "A. 173.25 cm²",
-        "B. 346.36 cm²",
-        "C. 432.25 cm²",
-        "D. 115.5 cm²"
-      ]
-    },
-    {
-      id: 72,
-      q: `A ring-shaped disc has outer radius 10 cm and inner radius 7 cm. What is the approximate ratio of the ring’s area to the area of the whole outer circle?`,
-      options: [
-        "A. 1 : 2",
-        "B. 2 : 3",
-        "C. 3 : 4",
-        "D. 4 : 5"
-      ]
-    },
-    {
-      id: 73,
-      q: `A bicycle wheel has radius 35 cm. What percentage of its circumference is covered in a quarter turn? (Use \\( \\pi = 22/7 \\).)`,
-      options: [
-        "A. 15%",
-        "B. 25%",
-        "C. 30%",
-        "D. 35%"
-      ]
-    },
-    {
-      id: 74,
-      q: `The line \\( y = mx + 5 \\) passes through the point (1, 8). Find m.`,
-      options: [
-        "A. 3",
-        "B. 2",
-        "C. 5",
-        "D. -3"
-      ]
-    },
-    {
-      id: 75,
-      q: `313 + 183 - 373 + 210 is equal to:`,
-      options: [
-        "A. -368",
-        "B. -148",
-        "C. -456",
-        "D. -234"
-      ]
-    }
-  ],
-
-  "English Comprehension": [
-    {
-      id: 76,
-      q: `Select the most appropriate synonym of the given word: PERFIDIOUS`,
-      options: [
-        "A. Honest",
-        "B. Faithful",
-        "C. Treacherous",
-        "D. Loyal"
-      ]
-    },
-    {
-      id: 77,
-      q: `Choose the correct meaning of the idiom “Hobson’s Choice.”`,
-      options: [
-        "A. A dilemma between two evils",
-        "B. A free and fair decision",
-        "C. No real choice at all",
-        "D. A selection made under duress"
-      ]
-    },
-    {
-      id: 78,
-      q: `Select the most appropriate antonym of the given word: Perfidious`,
-      options: [
-        "A. Betraying",
-        "B. Faithless",
-        "C. Treacherous",
-        "D. Loyal"
-      ]
-    },
-    {
-      id: 79,
-      q: `Identify the misspelt word.`,
-      options: [
-        "A. Vicereine",
-        "B. Floccinaucinihilipilification",
-        "C. Defenestrate",
-        "D. Quintessance"
-      ]
-    },
-    {
-      id: 80,
-      q: `Spot the correct spelling of a CSF-shunt procedure.`,
-      options: [
-        "A. Ventriculoperitoneal",
-        "B. Ventriculoperitonal",
-        "C. Ventriculaperitoneal",
-        "D. Ventriculoperetoneal"
-      ]
-    },
-    {
-      id: 81,
-      q: `Choose the correct one-word substitute for: "An official reprimand or strong criticism."`,
-      options: [
-        "A. Accusation",
-        "B. Denunciation",
-        "C. Censure",
-        "D. Indictment"
-      ]
-    },
-    {
-      id: 82,
-      q: `The startup scaled so rapidly that its infrastructure could ___ keep pace.`,
-      options: [
-        "A. Barely",
-        "B. Merely",
-        "C. Scarcely",
-        "D. All but"
-      ]
-    },
-    {
-      id: 83,
-      q: `Rare though the phenomenon is, it can occur ___ prolonged drought conditions.`,
-      options: [
-        "A. Towards",
-        "B. Amid",
-        "C. Among",
-        "D. During"
-      ]
-    },
-    {
-      id: 84,
-      q: `While the proposal appeared pragmatic on paper, its implementation proved ___ complicated than expected.`,
-      options: [
-        "A. Less",
-        "B. Much",
-        "C. Rather",
-        "D. More"
-      ]
-    },
-    {
-      id: 85,
-      q: `Find the part of the sentence that contains an error:\nThat the report failed to address the root causes (1) / of the community unrest were surprising (2) / given the exhaustive data (3) / compiled over several months. (4)`,
-      options: [
-        "A. (1)",
-        "B. (2)",
-        "C. (3)",
-        "D. (4)"
-      ]
-    },
-    {
-      id: 86,
-      q: `Find the part of the sentence that contains an error:\nWhat renders the draft legislation particularly contentious is not its proposed realignment of fiscal powers per se, (1) / but that it presumes, without empirical substantiation, (2) / a fiscal equivalence among states whose developmental baselines are (3) / incommensurable by any normative metric. (4)`,
-      options: [
-        "A. (1)",
-        "B. (2)",
-        "C. (3)",
-        "D. (4)"
-      ]
-    },
-    {
-      id: 87,
-      q: `Change the following from active to passive voice:\nThey have been neglecting maintenance of the archives for years.`,
-      options: [
-        "A. Maintenance of the archives had been neglected by them for years.",
-        "B. Maintenance of the archives is being neglected by them for years.",
-        "C. Maintenance of the archives was being neglected by them for years.",
-        "D. Maintenance of the archives has been being neglected by them for years."
-      ]
-    },
-    {
-      id: 88,
-      q: `Select the sentence containing the homonym of the highlighted word:\nThe choir began the introit at the priest’s signal.`,
-      options: [
-        "A. The child sang the introit during the intermission.",
-        "B. The introit was replaced by an organ improvisation.",
-        "C. The missal included Latin text for the introit.",
-        "D. The cantor rehearsed the Sunday introit."
-      ]
-    },
-    {
-      id: 89,
-      q: `Convert the sentence from passive to active voice:\nIt was being suggested by multiple sources that the operation had been compromised internally.`,
-      options: [
-        "A. Multiple sources suggested the operation was compromised internally.",
-        "B. The operation was compromised, multiple sources suggested.",
-        "C. Sources were suggesting an operation compromise.",
-        "D. The operation had compromised multiple internal sources."
-      ]
-    },
-
-    /* Q90 contains the comprehension passage followed by question 90. */
-    {
-      id: 90,
-      q: `Comprehension Passage:\n\nWhile education and wisdom are often conflated in everyday discourse, a discerning mind perceives a fundamental difference between the two. Education is the formal acquisition of knowledge, usually measured through degrees, academic achievements, and proficiency in structured disciplines. It is delivered through systematic curricula, institutional assessments, and theoretical frameworks.\n\nHowever, wisdom transcends this rigidity; it is the judicious application of knowledge to real-life situations, enriched by experience, introspection, and emotional intelligence. An individual may be highly educated yet lack wisdom if they are unable to apply their learning ethically and effectively. Conversely, many wise individuals — farmers, artisans, elders — may not possess formal education, but their decisions exhibit prudence and sagacity cultivated through lived experience.\n\nThus, education equips the mind, but wisdom enriches the soul. In an era dominated by information overload and algorithmic thinking, the gap between the two has widened. Educational institutions often prioritise rote memorisation and standardised testing over critical thinking and moral reasoning. Consequently, society produces people skilled in problem-solving but deficient in decision-making that requires empathy, patience, or foresight.\n\nWisdom, being innately human, cannot be downloaded or fast-tracked; it is earned through trial, failure, reflection, and a nuanced understanding of human nature. Furthermore, while education is temporally bounded — ending with formal schooling or academic milestones — wisdom is a lifelong pursuit. It does not boast certificates but manifests in humility, ethical consistency, and the ability to navigate ambiguity with grace.\n\nUltimately, the highest form of intelligence lies not merely in knowing what is right, but in consistently choosing to do it, especially when it is inconvenient.\n\nQ90. According to the passage, how is wisdom primarily acquired?`,
-      options: [
-        "A. Through textbooks",
-        "B. Through emotional detachment",
-        "C. Through experience and reflection",
-        "D. Through algorithmic thinking"
-      ]
-    },
-    {
-      id: 91,
-      q: `What does the author mean by "wisdom enriches the soul"?`,
-      options: [
-        "A. It enhances academic success.",
-        "B. It fosters deeper moral insight.",
-        "C. It improves verbal expression.",
-        "D. It sharpens mathematical skills."
-      ]
-    },
-    {
-      id: 92,
-      q: `According to the author, who can be wise despite lacking formal education?`,
-      options: [
-        "A. Scientists",
-        "B. School children",
-        "C. Elders and artisans",
-        "D. Technocrats"
-      ]
-    },
-    {
-      id: 93,
-      q: `What is the central contrast drawn in the passage?`,
-      options: [
-        "A. Education vs. career",
-        "B. Intelligence vs. memory",
-        "C. Reading vs. writing",
-        "D. Formal learning vs. applied wisdom"
-      ]
-    },
-    {
-      id: 94,
-      q: `According to the passage, why has the gap between education and wisdom widened in recent times?`,
-      options: [
-        "A. Due to overuse of social media",
-        "B. Because wisdom is no longer valued",
-        "C. Because of rote learning and algorithmic methods",
-        "D. Because people stop learning after school"
-      ]
-    },
-    {
-      id: 95,
-      q: `She has the reputation to be a kind woman.\nChoose the best replacement for the highlighted part.`,
-      options: [
-        "A. To have kindness",
-        "B. Of being a kind woman",
-        "C. Of being the kind woman",
-        "D. To be kind-hearted"
-      ]
-    },
-    {
-      id: 96,
-      q: `The doctor advised him to avoid eating sweets and doing exercise regularly.\nChoose the most suitable replacement.`,
-      options: [
-        "A. Avoiding sweets and doing regular exercise",
-        "B. To avoid sweets and to exercise regularly",
-        "C. To avoid eating sweets and to exercise regularly",
-        "D. To not eat sweets and do exercises"
-      ]
-    },
-    {
-      id: 97,
-      q: `He asked me, "Have you done your homework?"\nChoose the correct indirect speech.`,
-      options: [
-        "A. He asked me if I had done my homework.",
-        "B. He asked me have I done my homework.",
-        "C. He asked me whether I have done my homework.",
-        "D. He asked me whether had I done my homework."
-      ]
-    },
-    {
-      id: 98,
-      q: `He said that he would join the meeting after lunch.\nChoose the correct direct speech.`,
-      options: [
-        "A. \"I will join the meeting after lunch,\" he said.",
-        "B. \"I would join the meeting after lunch,\" he said.",
-        "C. \"I shall join the meeting after lunch,\" he said.",
-        "D. \"I can join the meeting after lunch,\" he said."
-      ]
-    },
-    {
-      id: 99,
-      q: `Rearrange the following sentences in correct order to make a logical passage:\n1. A media strategy was framed based on outreach results.\n2. Demographic metrics were tracked from campaign dashboards.\n3. User interactions were collected across platforms.\n4. Analysts segmented users by age and behaviour.`,
-      options: [
-        "A. 3 – 2 – 4 – 1",
-        "B. 2 – 3 – 1 – 4",
-        "C. 3 – 1 – 4 – 2",
-        "D. 4 – 1 – 2 – 3"
-      ]
-    },
-    {
-      id: 100,
-      q: `Rearrange the following sentences to form a coherent paragraph:\n1. It is a process that involves the systematic and objective investigation of a subject to discover new facts or confirm existing ones.\n2. Research is a foundational pillar of academic and scientific progress.\n3. This can be either theoretical, aiming to expand knowledge, or applied, seeking to solve a practical problem.\n4. The findings of this investigation are then documented and peer-reviewed to ensure validity and credibility.`,
-      options: [
-        "A. 2, 1, 3, 4",
-        "B. 1, 2, 4, 3",
-        "C. 4, 3, 2, 1",
-        "D. 3, 4, 1, 2"
-      ]
-    }
-  ]
-};
-
-// initialize UI if script already waiting
-if(typeof initUI === 'function') initUI();
-</script>
+</body>
+</html>
